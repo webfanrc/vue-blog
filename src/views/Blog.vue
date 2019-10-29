@@ -40,6 +40,9 @@ export default {
 };
 </script>
 <style lang="less">
+div.blog {
+  margin-bottom: 80px;
+}
 div.blogTag {
   min-height: 100px;
 
@@ -47,6 +50,7 @@ div.blogTag {
 
   border-bottom: 1px solid #eee;
   p.h1 {
+    display: inline-block;
     font-size: 30px;
     margin: 0;
     cursor: pointer;
