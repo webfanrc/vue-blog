@@ -2,13 +2,14 @@
   <div class="blog">
     <div v-for="(blog, index) in blogList" class="blogTag" :key="index">
       <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
-      <p class="h2">{{ blog.description }}</p>
+      <p class="h2">{{ blog.create_date }}</p>
       <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "blog",
   data: function() {
@@ -29,10 +30,20 @@ export default {
           description:
             "二年又一个月之前，我从这篇翻译开始，进入了网页开发领域。当初我写下这篇翻译开始，万万没有想到我当初一时的兴趣会引导我进入现在的生活。"
         }
-      ]
+      ],
+      testString: '',
     };
   },
+  mounted() {
+    this.init();
+  },
   methods: {
+    async init() {
+      console.log(1);
+      let response = await axios.get('http://localhost:8888/blog')
+      console.log(response.data);
+      this.blogList = response.data;
+    },
     routerToBlogPage(title) {
       this.$router.push({ path: "blogDetail", query: { title: title } });
     }
@@ -41,7 +52,7 @@ export default {
 </script>
 <style lang="less">
 div.blog {
-  margin-bottom: 80px;
+  padding-bottom: 80px;
 }
 div.blogTag {
   min-height: 100px;
