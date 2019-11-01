@@ -32,6 +32,11 @@
 </template>
 
 <style lang="less">
+a {
+  color: #4183C4;
+  text-decoration: none;
+  cursor: pointer;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -130,7 +135,6 @@ div.main_about {
   a {
     display: inline-block;
     text-decoration: none;
-    color: black;
     /*margin-left: 10px;*/
     &.router-link-exact-active {
       color: #4183c4;
