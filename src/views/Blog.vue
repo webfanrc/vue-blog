@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async init() {
-      let response = await axios.get('http://localhost:8888/blog')
+      let response = await axios.get('/blog');
       this.blogList = response.data;
       this.blogList.forEach(function(ele) {
         ele.blog_brief = ele.content.split('</p>')[0];

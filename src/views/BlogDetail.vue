@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async init() {
-      let response = await axios.get(`http://localhost:8888/blog_detail?title=${this.blogTitle}`);
+      let response = await axios.get(`/blog/detail?title=${this.blogTitle}`);
       this.blog_content = response.data[0].content;
       this.blog_date = response.data[0].create_date;
 

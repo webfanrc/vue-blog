@@ -9,6 +9,7 @@ Vue.use(Router);
 
 //TODO: 连接后面的#去掉
 export default new Router({
+  mode: 'history',  //去掉url中的#
   routes: [
     {
       path: "/",
