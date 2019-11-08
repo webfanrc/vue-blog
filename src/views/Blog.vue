@@ -1,9 +1,24 @@
 <template>
   <div class="blog">
-    <div v-for="(blog, index) in blogList" class="blogTag" :key="index">
+    <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index" v-if="fin">
       <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
       <p class="h2" v-html="blog.blog_brief"></p>
       <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
+    </div>
+
+    <div v-if="fin" v-show="showInfo">
+      <!--<button @click="showInfo = false" id="showInfo_control">-->
+        <!--Dismiss-->
+      <!--</button>-->
+      <ul>
+        <li>yourOS: {{blogInfo.yourOS}}</li>
+        <li>yourHost: {{blogInfo.yourHost}}</li>
+        <li>yourIP: {{blogInfo.yourIP}}</li>
+      </ul>
+    </div>
+
+    <div v-if="!fin">
+      Loading...
     </div>
   </div>
 </template>
@@ -14,7 +29,9 @@ export default {
   name: "blog",
   data: function() {
     return {
-      blogList: [],
+      blogInfo: {},
+      fin: false,
+      showInfo: true,
     };
   },
   mounted() {
@@ -23,10 +40,12 @@ export default {
   methods: {
     async init() {
       let response = await axios.get('/blog');
-      this.blogList = response.data;
-      this.blogList.forEach(function(ele) {
+      this.blogInfo = response.data;
+      this.blogInfo.blogList.forEach(function(ele) {
         ele.blog_brief = ele.content.split('</p>')[0];
       });
+
+      this.fin = true;
     },
     routerToBlogPage(title) {
       this.$router.push({ path: "blogDetail", query: { title: title } });
@@ -35,8 +54,12 @@ export default {
 };
 </script>
 <style lang="less">
+button.showInfo_control {
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 10px;
+}
 div.blog {
-  padding-bottom: 80px;
 }
 div.blogTag {
   min-height: 100px;
@@ -44,6 +67,9 @@ div.blogTag {
   padding: 36px 0;
 
   border-bottom: 1px solid #eee;
+  &:nth-last-of-type(1) {
+    border-bottom-width: 0;
+  }
   p.h1 {
     display: inline-block;
     font-size: 30px;

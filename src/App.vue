@@ -17,8 +17,11 @@
           <router-link to="/experience">Experience</router-link>
         </div>
       </div>
-      <router-view />
+      <div id="main_content">
+        <router-view />
+      </div>
     </div>
+
     <div id="footer_nav">
       <footer id="footer">
         <a href="https://github.com/ruochen95">
@@ -42,9 +45,8 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  max-width: 720px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0;
 
   min-height: 100%;
 }
@@ -76,6 +78,8 @@ a {
   justify-content: space-between;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
+  max-width: 720px;
+  margin: 0 auto;
   #header {
     display: flex;
     div.imgContainer {
@@ -131,7 +135,11 @@ a.mail {
     color: #4183c4;
   }
 }
-div.main_about {
+div#main_content {
+  padding: 10px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 10px 86px 10px;
   a {
     display: inline-block;
     text-decoration: none;

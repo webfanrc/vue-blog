@@ -30,17 +30,20 @@ export default {
       this.blog_date = response.data[0].create_date;
 
       this.formateDate();
+      this.catchIP();
     },
     formateDate() {
       let date = this.blog_date.split('T')[0].split('-');
       this.content_date = date[0] + '年' + date[1] + '月' + date[2] + '日';
+    },
+    catchIP() {
+
     }
   }
 };
 </script>
 <style lang="less">
   div.blogDetail {
-    padding-bottom: 80px;
   }
   div.date {
     color: #666;
