@@ -4,10 +4,10 @@ import Blog from "./views/Blog";
 import About from "./views/About";
 import Experience from "./views/Experience";
 import BlogDetail from "./views/BlogDetail";
+import BlogInfo from "./views/BlogInfo";
 
 Vue.use(Router);
 
-//TODO: 连接后面的#去掉
 export default new Router({
   mode: 'history',  //去掉url中的#
   routes: [
@@ -30,6 +30,11 @@ export default new Router({
       path: "/blogDetail",
       name: "blogDetail",
       component: BlogDetail
+    },
+    {
+      path: "/blogInfo",
+      name: "blogInfo",
+      component: BlogInfo
     }
   ]
 });

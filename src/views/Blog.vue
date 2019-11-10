@@ -1,20 +1,20 @@
 <template>
   <div class="blog">
+
+    <div v-if="fin" v-show="showInfo" class="infoDiv">
+      <!--<button @click="showInfo = false" id="showInfo_control">-->
+      <!--Dismiss-->
+      <!--</button>-->
+      <ul>
+        <li>yourIP: {{blogInfo.yourIP}}</li>
+      </ul>
+      <a @click="routerToMoreInfo()">More Info</a>
+    </div>
+
     <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index" v-if="fin">
       <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
       <p class="h2" v-html="blog.blog_brief"></p>
       <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
-    </div>
-
-    <div v-if="fin" v-show="showInfo">
-      <!--<button @click="showInfo = false" id="showInfo_control">-->
-        <!--Dismiss-->
-      <!--</button>-->
-      <ul>
-        <li>yourOS: {{blogInfo.yourOS}}</li>
-        <li>yourHost: {{blogInfo.yourHost}}</li>
-        <li>yourIP: {{blogInfo.yourIP}}</li>
-      </ul>
     </div>
 
     <div v-if="!fin">
@@ -49,6 +49,9 @@ export default {
     },
     routerToBlogPage(title) {
       this.$router.push({ path: "blogDetail", query: { title: title } });
+    },
+    routerToMoreInfo() {
+      this.$router.push({ path: "blogInfo" });
     }
   }
 };
@@ -93,4 +96,10 @@ div.blogTag {
     }
   }
 }
+  div.infoDiv {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 </style>
