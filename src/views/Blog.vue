@@ -48,10 +48,20 @@ export default {
       this.fin = true;
     },
     routerToBlogPage(title) {
+      this.ipAddress(title);
       this.$router.push({ path: "blogDetail", query: { title: title } });
     },
     routerToMoreInfo() {
       this.$router.push({ path: "blogInfo" });
+    },
+    async ipAddress(title) {
+      let that = this;
+      let response = await axios.get('/ipAddress', {
+        params: {
+          user_ip: that.blogInfo.yourIP,
+          view_title: title,
+        }
+      })
     }
   }
 };

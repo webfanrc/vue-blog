@@ -4,7 +4,7 @@ import Blog from "./views/Blog";
 import About from "./views/About";
 import Experience from "./views/Experience";
 import BlogDetail from "./views/BlogDetail";
-import BlogInfo from "./views/BlogInfo";
+import BlogInfo from "./views/Statics";
 
 Vue.use(Router);
 
