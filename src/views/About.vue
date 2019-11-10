@@ -50,7 +50,7 @@
         //     user_message: that.user_message,
         //   }
         // });
-        let respons = await axios.get('/sendMessage', {
+        let respons = await axios.get('/blog/sendMessage', {
           params: {
             user_name: that.user_name,
             user_email: that.user_email,

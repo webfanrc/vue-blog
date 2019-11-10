@@ -32,7 +32,7 @@
     },
     methods: {
       async init() {
-        let response = await axios.get('/getUserIP');
+        let response = await axios.get('/blog/getUserIP');
         this.ipInfo = response.data;
 
         console.log(this.ipInfo);

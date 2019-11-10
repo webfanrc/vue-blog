@@ -56,7 +56,7 @@ export default {
     },
     async ipAddress(title) {
       let that = this;
-      let response = await axios.get('/ipAddress', {
+      let response = await axios.get('/blog/ipAddress', {
         params: {
           user_ip: that.blogInfo.yourIP,
           view_title: title,
