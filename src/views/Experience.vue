@@ -24,7 +24,7 @@
     <h2>Experience</h2>
     <ul>
       <li>
-        Front-end web Development (In Bitmain.com, 2017.4 - 2018.12)
+        Front-end web Development (In Bitmain.com, 4/2017 - 1/2019)
       </li>
     </ul>
   </div>

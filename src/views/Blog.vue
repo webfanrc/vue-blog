@@ -39,11 +39,13 @@ export default {
   },
   methods: {
     async init() {
-      let response = await axios.get('/blog');
+      let response = await axios.get('/blog/');
       this.blogInfo = response.data;
       this.blogInfo.blogList.forEach(function(ele) {
         ele.blog_brief = ele.content.split('</p>')[0];
       });
+
+      this.ipAddress("main page");
 
       this.fin = true;
     },
@@ -54,9 +56,10 @@ export default {
     routerToMoreInfo() {
       this.$router.push({ path: "blogInfo" });
     },
+    // 记录用户IP以及点击的博客名称（为main时为主页）
     async ipAddress(title) {
       let that = this;
-      let response = await axios.get('/blog/ipAddress', {
+      await axios.get('/blog/ipAddress', {
         params: {
           user_ip: that.blogInfo.yourIP,
           view_title: title,

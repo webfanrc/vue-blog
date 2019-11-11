@@ -139,7 +139,7 @@ div#main_content {
   padding: 10px;
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 10px 86px 10px;
+  padding: 0 10px 96px 10px;
   a {
     display: inline-block;
     text-decoration: none;

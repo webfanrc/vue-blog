@@ -3,4 +3,8 @@ module.exports = {
   publicPath: './',
   outputDir: '/data/www',
   assetsDir: './',
+  devServer: {
+    port: 8081,
+  },
+
 };

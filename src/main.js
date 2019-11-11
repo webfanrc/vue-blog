@@ -4,6 +4,9 @@ import router from "./router";
 import store from "./store";
 import axios from 'axios';
 
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
 if ( process.env.NODE_ENV === 'development' ) {
   axios.defaults.baseURL="http://localhost:8888";
 } else {

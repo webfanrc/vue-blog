@@ -1,6 +1,9 @@
 <template>
-  <div class="moreInfo">
-    <table>
+  <div class="moreInfo" v-if="fin">
+    <view-table :lineTableData="ipInfoFormat"></view-table>
+    <button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>
+    <button @click="showRawData = false" v-if="showRawData == true">Hide raw data</button>
+    <table v-if="showRawData">
       <thead>
         <tr>
           <td>user_ip</td>
@@ -9,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(info, index) in ipInfo.ipList" :key="index">
+        <tr v-for="(info, index) in ipInfo" :key="index">
           <td>{{info.user_ip}}</td>
           <td>{{info.view_date}}</td>
           <td>{{info.view_title}}</td>
@@ -20,11 +23,17 @@
 </template>
 <script>
   import axios from 'axios'
+  import ViewTable from '../components/ViewTable'
   export default {
+    components: {
+      ViewTable
+    },
     data: function() {
       return {
         fin: false,
-        ipInfo: {},
+        ipInfo: [],
+        ipInfoFormat: [],
+        showRawData: false,
       }
     },
     mounted() {
@@ -33,9 +42,13 @@
     methods: {
       async init() {
         let response = await axios.get('/blog/getUserIP');
-        this.ipInfo = response.data;
+        this.ipInfo = response.data.ipList;
+
+        response = await axios.get('/blog/getUserIPFormat');
+        this.ipInfoFormat = response.data.ipListFormat;
 
         console.log(this.ipInfo);
+        console.log(this.ipInfoFormat);
 
         this.fin = true;
       }
