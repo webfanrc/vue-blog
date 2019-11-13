@@ -1,6 +1,8 @@
 <template>
-  <div class="moreInfo" v-if="fin">
+  <div class="Statics" v-if="fin">
+
     <view-table :lineTableData="ipInfoFormat"></view-table>
+
     <button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>
     <button @click="showRawData = false" v-if="showRawData == true">Hide raw data</button>
     <table v-if="showRawData">

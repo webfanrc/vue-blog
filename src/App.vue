@@ -78,8 +78,12 @@ a {
   justify-content: space-between;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
-  max-width: 720px;
   margin: 0 auto;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 720px;
+  background: white;
   #header {
     display: flex;
     div.imgContainer {
@@ -139,7 +143,7 @@ div#main_content {
   padding: 10px;
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 10px 96px 10px;
+  padding: 120px 10px 96px 10px;
   a {
     display: inline-block;
     text-decoration: none;

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div id="myChart" :style="{width: '700px', height: '400px'}"></div>
+  <div class="viewTable" ref="viewTable">
+    <div id="myChart" :style="{width: defaultWidth, height: defaultHeight}"></div>
   </div>
 </template>
 
@@ -14,15 +14,18 @@
       return {
         time: [],
         number: [],
+        defaultWidth: '100%',
+        defaultHeight: '400px',
+        chartStyle: '',
       }
     },
     props: ['lineTableData'],
     mounted(){
-      this.formate();
+      this.setData();
       this.init();
     },
     methods: {
-      formate() {
+      setData() {
         let that = this;
         this.lineTableData.forEach(function(n) {
 
@@ -33,12 +36,16 @@
       init(){
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('myChart'));
+        let that = this;
         // 绘制图表
         myChart.setOption({
-          title: { text: '' },
-          tooltip: {},
+          title: { text: '每日访问量' },
+          itemStyle: {
+            width: that.defaultWidth,
+          },
           xAxis: {
             data: this.time,
+            name: '',
             type: 'category',
             boundaryGap: false,
           },
@@ -46,11 +53,12 @@
             type: 'value'
           },
           series: [{
-            name: 'Time',
+            name: '时间',
             type: 'line',
             data: this.number,
             smooth: true,
-            areaStyle: {}
+            areaStyle: {
+            }
           }]
         });
       }

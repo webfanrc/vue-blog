@@ -5,10 +5,10 @@
       <!--<button @click="showInfo = false" id="showInfo_control">-->
       <!--Dismiss-->
       <!--</button>-->
-      <ul>
-        <li>yourIP: {{blogInfo.yourIP}}</li>
-      </ul>
-      <a @click="routerToMoreInfo()">More Info</a>
+      <div>
+        <p>yourIP: {{blogInfo.yourIP}}</p>
+      </div>
+      <a @click="routerToMoreInfo()">Statics</a>
     </div>
 
     <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index" v-if="fin">
@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     async init() {
+      // this.$Loading.start();
       let response = await axios.get('/blog/');
       this.blogInfo = response.data;
       this.blogInfo.blogList.forEach(function(ele) {
@@ -48,6 +49,7 @@ export default {
       this.ipAddress("main page");
 
       this.fin = true;
+      // this.$Loading.error();
     },
     routerToBlogPage(title) {
       this.ipAddress(title);
