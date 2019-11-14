@@ -1,7 +1,7 @@
 module.exports = {
   lintOnSave: false,
   publicPath: './',
-  outputDir: './dist',
+  outputDir: '/www/dist',
   assetsDir: './',
   devServer: {
     port: 8081,
