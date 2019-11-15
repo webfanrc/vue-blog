@@ -11,6 +11,7 @@ let echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/line');
 
 require('echarts/lib/component/title');
+
 //vue全局注入echarts
 Vue.prototype.$echarts = echarts;
 

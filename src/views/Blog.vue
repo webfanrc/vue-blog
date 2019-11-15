@@ -39,17 +39,16 @@ export default {
   },
   methods: {
     async init() {
-      // this.$Loading.start();
       let response = await axios.get('/blog/');
       this.blogInfo = response.data;
       this.blogInfo.blogList.forEach(function(ele) {
         ele.blog_brief = ele.content.split('</p>')[0];
       });
 
+
       this.ipAddress("main page");
 
       this.fin = true;
-      // this.$Loading.error();
     },
     routerToBlogPage(title) {
       this.ipAddress(title);
@@ -58,16 +57,25 @@ export default {
     routerToMoreInfo() {
       this.$router.push({ path: "blogInfo" });
     },
+    // 当前用户这天没有访问过这个页面，
     // 记录用户IP以及点击的博客名称（为main时为主页）
     async ipAddress(title) {
       let that = this;
-      await axios.get('/blog/ipAddress', {
+      let response = await axios.get('/blog/ipFilter', {
         params: {
           user_ip: that.blogInfo.yourIP,
           view_title: title,
         }
-      })
-    }
+      });
+      if (response.data == false) {
+        await axios.get('/blog/ipAddress', {
+          params: {
+            user_ip: that.blogInfo.yourIP,
+            view_title: title,
+          }
+        })
+      }
+    },
   }
 };
 </script>
