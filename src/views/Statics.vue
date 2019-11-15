@@ -3,7 +3,7 @@
 
     <view-table :lineTableData="ipInfoFormat"></view-table>
 
-    <button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>
+    <!--<button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>-->
     <button @click="showRawData = false" v-if="showRawData == true">Hide raw data</button>
     <table v-if="showRawData">
       <thead>
@@ -48,9 +48,6 @@
 
         response = await axios.get('/blog/getUserIPFormat');
         this.ipInfoFormat = response.data.ipListFormat;
-
-        console.log(this.ipInfo);
-        console.log(this.ipInfoFormat);
 
         this.fin = true;
       }

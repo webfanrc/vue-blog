@@ -17,9 +17,17 @@
           <router-link to="/experience">Experience</router-link>
         </div>
       </div>
+
+
+      <!--
+      view
+      -->
       <div id="main_content">
         <router-view />
       </div>
+
+
+
     </div>
 
     <div id="footer_nav">
@@ -33,6 +41,19 @@
     </div>
   </div>
 </template>
+<script>
+  export default {
+    data: function() {
+      return {
+        // processArray: ['test'],
+        // finishedIndex: 0,
+      }
+    },
+    mounted() {
+      // console.log('processArray2', this.processArray);
+    },
+  }
+</script>
 
 <style lang="less">
 a {
@@ -70,6 +91,9 @@ a {
         margin-top: 9px;
       }
     }
+    div#main_content {
+      padding: 211px 10px 96px 10px;
+    }
   }
 }
 #header_nav {
@@ -84,6 +108,8 @@ a {
   transform: translate(-50%, 0);
   width: 720px;
   background: white;
+
+  z-index: 9999;
   #header {
     display: flex;
     div.imgContainer {
@@ -140,7 +166,6 @@ a.mail {
   }
 }
 div#main_content {
-  padding: 10px;
   max-width: 720px;
   margin: 0 auto;
   padding: 120px 10px 96px 10px;

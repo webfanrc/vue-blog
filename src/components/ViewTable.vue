@@ -1,6 +1,6 @@
 <template>
   <div class="viewTable" ref="viewTable">
-    <div id="myChart" :style="{width: defaultWidth, height: defaultHeight}"></div>
+    <div id="visitorChart" ref="visitorChart" :style="{width: defaultWidth, height: defaultHeight, zIndex: -1}"></div>
   </div>
 </template>
 
@@ -35,13 +35,12 @@
       },
       init(){
         // 基于准备好的dom，初始化echarts实例
-        let myChart = this.$echarts.init(document.getElementById('myChart'));
+        let myChart = this.$echarts.init(this.$refs.visitorChart);
         let that = this;
         // 绘制图表
         myChart.setOption({
-          title: { text: '每日访问量' },
+          title: { text: 'Daily visitor' },
           itemStyle: {
-            width: that.defaultWidth,
           },
           xAxis: {
             data: this.time,
@@ -74,5 +73,8 @@
   .echarts {
     width: 100%;
     height: 100%;
+  }
+  #visitorChart {
+    margin-top: 10px;
   }
 </style>

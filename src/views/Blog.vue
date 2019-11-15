@@ -1,25 +1,30 @@
 <template>
   <div class="blog">
 
-    <div v-if="fin" v-show="showInfo" class="infoDiv">
-      <!--<button @click="showInfo = false" id="showInfo_control">-->
-      <!--Dismiss-->
-      <!--</button>-->
-      <div>
-        <p>yourIP: {{blogInfo.yourIP}}</p>
+    <template v-if="fin">
+      <div v-show="showInfo" class="infoDiv">
+        <!--<button @click="showInfo = false" id="showInfo_control">-->
+        <!--Dismiss-->
+        <!--</button>-->
+        <div>
+          <p>yourIP: {{blogInfo.yourIP}}</p>
+        </div>
+        <a @click="routerToMoreInfo()">Statics</a>
       </div>
-      <a @click="routerToMoreInfo()">Statics</a>
-    </div>
 
-    <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index" v-if="fin">
-      <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
-      <p class="h2" v-html="blog.blog_brief"></p>
-      <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
-    </div>
+      <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index">
+        <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
+        <p class="h2" v-html="blog.blog_brief"></p>
+        <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
+      </div>
+    </template>
 
-    <div v-if="!fin">
-      Loading...
-    </div>
+    <template v-if="!fin">
+
+      <div id="loading">
+        Loading...
+      </div>
+    </template>
   </div>
 </template>
 
@@ -39,14 +44,17 @@ export default {
   },
   methods: {
     async init() {
+
       let response = await axios.get('/blog/');
+
+
       this.blogInfo = response.data;
       this.blogInfo.blogList.forEach(function(ele) {
         ele.blog_brief = ele.content.split('</p>')[0];
       });
 
-
       this.ipAddress("main page");
+
 
       this.fin = true;
     },
@@ -55,7 +63,7 @@ export default {
       this.$router.push({ path: "blogDetail", query: { title: title } });
     },
     routerToMoreInfo() {
-      this.$router.push({ path: "blogInfo" });
+      this.$router.push({ path: "Statics" });
     },
     // 当前用户这天没有访问过这个页面，
     // 记录用户IP以及点击的博客名称（为main时为主页）
@@ -73,7 +81,7 @@ export default {
             user_ip: that.blogInfo.yourIP,
             view_title: title,
           }
-        })
+        });
       }
     },
   }
@@ -124,5 +132,10 @@ div.blogTag {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  div#loading {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
   }
 </style>

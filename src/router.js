@@ -4,7 +4,7 @@ import Blog from "./views/Blog";
 import About from "./views/About";
 import Experience from "./views/Experience";
 import BlogDetail from "./views/BlogDetail";
-import BlogInfo from "./views/Statics";
+import Statics from "./views/Statics";
 
 Vue.use(Router);
 
@@ -32,9 +32,9 @@ export default new Router({
       component: BlogDetail
     },
     {
-      path: "/blogInfo",
-      name: "blogInfo",
-      component: BlogInfo
+      path: "/Statics",
+      name: "Statics",
+      component: Statics
     }
   ]
 });
