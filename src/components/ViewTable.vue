@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import 'echarts/lib/chart/line'
-  import 'echarts/lib/component/polar'
 
   export default {
     name: 'ViewTable',
@@ -34,8 +32,15 @@
         })
       },
       init(){
+
+        let echarts = require('echarts/lib/echarts');
+
+        require('echarts/lib/chart/line');
+
+        require('echarts/lib/component/title');
+
         // 基于准备好的dom，初始化echarts实例
-        let myChart = this.$echarts.init(this.$refs.visitorChart);
+        let myChart = echarts.init(this.$refs.visitorChart);
         let that = this;
         // 绘制图表
         myChart.setOption({

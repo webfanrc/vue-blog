@@ -99,7 +99,12 @@
       },
       init(){
         // 基于准备好的dom，初始化echarts实例
-        let myChart = this.$echarts.init(this.$refs.articleChart);
+        let echarts = require('echarts/lib/echarts');
+
+        require('echarts/lib/chart/bar');
+
+        require('echarts/lib/component/title');
+        let myChart = echarts.init(this.$refs.articleChart);
         let that = this;
         // 绘制图表
         myChart.setOption({
