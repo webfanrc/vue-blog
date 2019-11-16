@@ -3,16 +3,17 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from 'axios';
+import echarts from 'echarts';
 
+// let echarts = require('echarts/lib/echarts');
+//
+// require('echarts/lib/chart/line');
+// require('echarts/lib/chart/bar');
+//
+// require('echarts/lib/component/title');
+// require('echarts/lib/component/tooltip');
+// require('echarts/lib/component/grid');
 
-
-let echarts = require('echarts/lib/echarts');
-
-require('echarts/lib/chart/line');
-
-require('echarts/lib/component/title');
-
-//vue全局注入echarts
 Vue.prototype.$echarts = echarts;
 
 if ( process.env.NODE_ENV === 'development' ) {

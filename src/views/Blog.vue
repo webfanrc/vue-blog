@@ -2,6 +2,7 @@
   <div class="blog">
 
     <template v-if="fin">
+
       <div v-show="showInfo" class="infoDiv">
         <!--<button @click="showInfo = false" id="showInfo_control">-->
         <!--Dismiss-->
@@ -9,7 +10,6 @@
         <div>
           <p>yourIP: {{blogInfo.yourIP}}</p>
         </div>
-        <a @click="routerToMoreInfo()">Statics</a>
       </div>
 
       <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index">
@@ -17,6 +17,7 @@
         <p class="h2" v-html="blog.blog_brief"></p>
         <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
       </div>
+
     </template>
 
     <template v-if="!fin">
@@ -61,9 +62,6 @@ export default {
     routerToBlogPage(title) {
       this.ipAddress(title);
       this.$router.push({ path: "blogDetail", query: { title: title } });
-    },
-    routerToMoreInfo() {
-      this.$router.push({ path: "Statics" });
     },
     // 当前用户这天没有访问过这个页面，
     // 记录用户IP以及点击的博客名称（为main时为主页）

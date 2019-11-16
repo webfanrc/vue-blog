@@ -3,9 +3,9 @@
     <div id="app">
       <div id="header_nav">
         <div id="header">
-          <div class="imgContainer">
-            <img src="./assets/jekyll-logo.png" />
-          </div>
+          <!--<div class="imgContainer">-->
+            <!--<img src="./assets/jekyll-logo.png" />-->
+          <!--</div>-->
           <div class="description">
             <p class="h1">Xie Ruochen</p>
             <p class="h2">Aiming for Modern Web Development</p>
@@ -13,8 +13,9 @@
         </div>
         <div id="nav">
           <router-link to="/">Blog</router-link>
+          <router-link to="/Archives">Archives</router-link>
           <router-link to="/about">About</router-link>
-          <router-link to="/experience">Experience</router-link>
+          <router-link to="/Statistic">Statistic</router-link>
         </div>
       </div>
 
@@ -92,7 +93,7 @@ a {
       }
     }
     div#main_content {
-      padding: 211px 10px 96px 10px;
+      padding: 132px 10px 96px 10px;
     }
   }
 }
@@ -168,7 +169,7 @@ a.mail {
 div#main_content {
   max-width: 720px;
   margin: 0 auto;
-  padding: 120px 10px 96px 10px;
+  padding: 101px 10px 96px 10px;
   a {
     display: inline-block;
     text-decoration: none;

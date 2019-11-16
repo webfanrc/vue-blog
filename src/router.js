@@ -2,9 +2,9 @@ import Vue from "vue";
 import Router from "vue-router";
 import Blog from "./views/Blog";
 import About from "./views/About";
-import Experience from "./views/Experience";
 import BlogDetail from "./views/BlogDetail";
-import Statics from "./views/Statics";
+import Statistic from "./views/Statistic";
+import Archives from "./views/Archives"
 
 Vue.use(Router);
 
@@ -22,19 +22,19 @@ export default new Router({
       component: About
     },
     {
-      path: "/experience",
-      name: "experience",
-      component: Experience
-    },
-    {
       path: "/blogDetail",
       name: "blogDetail",
       component: BlogDetail
     },
     {
-      path: "/Statics",
-      name: "Statics",
-      component: Statics
+      path: "/Statistic",
+      name: "Statistic",
+      component: Statistic
+    },
+    {
+      path: "/Archives",
+      name: "Archives",
+      component: Archives
     }
   ]
 });

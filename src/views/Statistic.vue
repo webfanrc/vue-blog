@@ -1,9 +1,12 @@
 <template>
-  <div class="Statics" v-if="fin">
+  <div class="Statistic" v-if="fin">
+    <h1>Statistic</h1>
 
+    <view-table-article :barTableData="articleFormat"></view-table-article>
     <view-table :lineTableData="ipInfoFormat"></view-table>
 
-    <!--<button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>-->
+
+    <button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>
     <button @click="showRawData = false" v-if="showRawData == true">Hide raw data</button>
     <table v-if="showRawData">
       <thead>
@@ -26,15 +29,18 @@
 <script>
   import axios from 'axios'
   import ViewTable from '../components/ViewTable'
+  import ViewTableArticle from '../components/ViewTableArticle'
   export default {
     components: {
-      ViewTable
+      ViewTable,
+      ViewTableArticle
     },
     data: function() {
       return {
         fin: false,
         ipInfo: [],
         ipInfoFormat: [],
+        articleFormat: [],
         showRawData: false,
       }
     },
@@ -48,6 +54,9 @@
 
         response = await axios.get('/blog/getUserIPFormat');
         this.ipInfoFormat = response.data.ipListFormat;
+
+        response = await axios.get('/blog/getArticleFormat');
+        this.articleFormat = response.data.articleListFormat;
 
         this.fin = true;
       }

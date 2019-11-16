@@ -6,12 +6,18 @@
     <div class="date">
       <p>{{content_date}}</p>
     </div>
+
+    <comment-and-thoughts :groupArea="blogTitle"></comment-and-thoughts>
   </div>
 </template>
 <script>
 import axios from 'axios';
+import CommentAndThoughts from '../components/CommentAndThoughts'
 export default {
   name: "blogDetail",
+  components: {
+    CommentAndThoughts,
+  },
   data: function() {
     return {
       blogTitle: this.$route.query.title,

@@ -40,8 +40,6 @@
         // 绘制图表
         myChart.setOption({
           title: { text: 'Daily visitor' },
-          itemStyle: {
-          },
           xAxis: {
             data: this.time,
             name: '',
@@ -73,8 +71,5 @@
   .echarts {
     width: 100%;
     height: 100%;
-  }
-  #visitorChart {
-    margin-top: 10px;
   }
 </style>
