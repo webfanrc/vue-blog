@@ -224,4 +224,93 @@ div#footer_nav {
   &.jianshu { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAhUExURf///+ReRf759+dsVuuEcu6Xh/Cjlvvk4PnX0f3v7fW9s8/CeRgAAARmSURBVHja7ZvruqogEECNAQTe/4F3meIlFTG1aK/163xtO7lkZIZbVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/Biqdg9qv3yJd89L1L5feP7A/fvfIey0NGi36GvbK+wuY2WeXxfzHcLh1hIWW0jaK/SuNlK6+/r8n32DuiyiTXs74pKPxKjjhVUwDfaqgHdd8xmffCShOqGFuxsw/poG7iPav6ImET1DOhZTId3dgb0kquvubm4yQ9Ok9rZ2Sfq9TghXXr8VQJkN3NvM0LzW/SOZ5X3hGNS6vvANXhRefyT3u/RvC8efsKf7+nTrBVkXNupt4fjYlxPFUb42KeMSvrdQvS8c88DJPbWysf+9J0It/b9janTdzUrzSdcS/TVheItqlhhGWi1wURN7O0rB3X0Nn3Lv65rI7eI7LPyHZhYZPbQZrDdvlTYbE5K5jQPJTp+yiu9vlzHq1SKhToX/cl8Rbmc3sQ964hvjqi0AVG3lpcQya/eV6ALXhL2c3MQuNq/E1up+VPw4nIcVwWpVFAMzXzhmJjkpFw9k/LSvbJsvxvNw3BhrBJ9dxaynP7e9139LWIKaKWqHwjIaxsQomG2IILuFYz13UmbSrUxoJyMabTeK4Ofd66DmMuZ8faWCzeqlB+PsDaPUt4XFuC4In47eNrSKD2E9HaUq97wm5676wkMtvAJNRXduTOt76zo/GKm4mfjUoT6iz9woLK89xoHYziWMeqFh+dNM2ql1DhT2Ljw4a6ZPvaSSRyS18bqZoI4Tvm7SchBKIbd39QUKxya+1xL/Qji+xffU6uQ/CMcK2P4T4ThJJz63GC5UOLZrqOqwqXfWZQvHoZldnLSYZN9QqHA33W5Sq2lLay+FCXvTTE1pk72aWahwLXvH3L8irNw6cSjxK8K1rBP9ZoRX+rh+mtZP/mD6KZ6s4chRwm5r2n0VVmv5LE4ATD43/aR33nDkG4T3zt9Nf6IYYXuMsClGOJQs/PKuSVK4Klp4ur2om0JdE969zPKVwhtaWDm7tFSWXkzrLylHeCUTp5dLVaxNShLeUGmlV0IQRvgMYT0ZNIRfF95ReCCMMMIIlzV4KDsPT+q+/1d4aIQR/s1aWv2osF1aaKjOElbfJOydnn5+uHBcsbWfz8ODGRp3lnB/juTUgy25lVYfbscIPzdm3bH9Vtf6i4QHm/WOEX4swchNLpu0zBQebk48Rjis/sanhUfbAw4Snk5lS1DfISyiR4dXjnqH5VrfV2EfFphuqrWHCI+OSIicf55295YHn1cmLKalfrHC2mN2Kp8j3J9n23ZWcEtpeQmZwvEYls7sVIsV1juX+koVVnpn1ixVuDLTLFJlCpsvEd66kcQuVyKbhC858p4SztliOSgURGdkzbtws8srqA8LP44pheA2nwRT8QxIxpce33scVnH1p3UBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK7kD0a5Ork03wo0AAAAAElFTkSuQmCC); }
 }
 
+
+html {
+  font-size: 100%;
+}
+
+
+.container {
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+
+  line-height: 1.7;
+  margin: 1em 0 15px;
+  padding: 0;
+
+@include mobile {
+  line-height: 1.4;
+}
+}
+
+h1 {
+  font-size: 30px;
+  a {
+    color: inherit;
+  }
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  margin: 15px 0;
+}
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover, &:active {
+    color: #4183C4;
+  }
+}
+
+ul, ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol ul, ul ol, ul ul, ol ol {
+  margin: 0;
+}
+
+ul ul, ol ul {
+  list-style-type: circle;
+}
+
+em, i {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
 </style>

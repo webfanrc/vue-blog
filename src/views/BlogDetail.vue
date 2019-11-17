@@ -24,6 +24,7 @@ export default {
       blog_content: '',
       blog_date: '',
       content_date: '',
+      userIP: '',
     };
   },
   mounted() {
@@ -35,16 +36,35 @@ export default {
       this.blog_content = response.data[0].content;
       this.blog_date = response.data[0].create_date;
 
+      response = await axios.get('/blog/getUserIP');
+      this.userIP = response.data.userIP;
+
       this.formateDate();
-      this.catchIP();
+      this.ipAddress(this.blogTitle);
     },
     formateDate() {
       let date = this.blog_date.split('T')[0].split('-');
       this.content_date = date[0] + '年' + date[1] + '月' + date[2] + '日';
     },
-    catchIP() {
-
-    }
+    // 当前用户这天没有访问过这个页面，
+    // 记录用户IP以及点击的博客名称（为main时为主页）
+    async ipAddress(title) {
+      let that = this;
+      let response = await axios.get('/blog/ipFilter', {
+        params: {
+          user_ip: that.userIP,
+          view_title: title,
+        }
+      });
+      if (response.data == false) {
+        await axios.get('/blog/ipAddress', {
+          params: {
+            user_ip: that.userIP,
+            view_title: title,
+          }
+        });
+      }
+    },
   }
 };
 </script>

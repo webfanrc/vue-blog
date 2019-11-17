@@ -2,20 +2,9 @@
   <div class="blog">
 
     <template v-if="fin">
-
-      <div v-show="showInfo" class="infoDiv">
-        <!--<button @click="showInfo = false" id="showInfo_control">-->
-        <!--Dismiss-->
-        <!--</button>-->
-        <div>
-          <p>yourIP: {{blogInfo.yourIP}}</p>
-        </div>
-      </div>
-
       <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index">
         <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
-        <p class="h2" v-html="blog.blog_brief"></p>
-        <p class="readMore" @click="routerToBlogPage(blog.title)">Read More</p>
+        <p>{{blog.date}}</p>
       </div>
 
     </template>
@@ -38,6 +27,8 @@ export default {
       blogInfo: {},
       fin: false,
       showInfo: true,
+
+      userIP: '',
     };
   },
   mounted() {
@@ -47,12 +38,11 @@ export default {
     async init() {
 
       let response = await axios.get('/blog/');
-
-
       this.blogInfo = response.data;
-      this.blogInfo.blogList.forEach(function(ele) {
-        ele.blog_brief = ele.content.split('</p>')[0];
-      });
+
+      response = await axios.get('/blog/getUserIP');
+
+      this.userIP = response.data.userIP;
 
       this.ipAddress("main page");
 
@@ -60,7 +50,6 @@ export default {
       this.fin = true;
     },
     routerToBlogPage(title) {
-      this.ipAddress(title);
       this.$router.push({ path: "blogDetail", query: { title: title } });
     },
     // 当前用户这天没有访问过这个页面，
@@ -69,14 +58,14 @@ export default {
       let that = this;
       let response = await axios.get('/blog/ipFilter', {
         params: {
-          user_ip: that.blogInfo.yourIP,
+          user_ip: that.userIP,
           view_title: title,
         }
       });
       if (response.data == false) {
         await axios.get('/blog/ipAddress', {
           params: {
-            user_ip: that.blogInfo.yourIP,
+            user_ip: that.userIP,
             view_title: title,
           }
         });
