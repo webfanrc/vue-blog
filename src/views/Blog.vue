@@ -4,17 +4,11 @@
     <template v-if="fin">
       <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index">
         <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
-        <p>{{blog.date}}</p>
+        <p class="date">{{blog.date}}</p>
       </div>
 
     </template>
 
-    <template v-if="!fin">
-
-      <div id="loading">
-        Loading...
-      </div>
-    </template>
   </div>
 </template>
 
@@ -83,35 +77,32 @@ button.showInfo_control {
 div.blog {
 }
 div.blogTag {
-  min-height: 100px;
+  min-height: 90px;
 
-  padding: 36px 0;
+  padding: 16px 0;
 
   border-bottom: 1px solid #eee;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+
   &:nth-last-of-type(1) {
     border-bottom-width: 0;
   }
   p.h1 {
     display: inline-block;
-    font-size: 30px;
+    font-size: 26px;
     margin: 0;
     cursor: pointer;
     &:hover {
       color: #4183c4;
     }
   }
-  p.h2 {
-    font-size: 18px;
-    margin: 15px 0 0 0;
-  }
-  p.readMore {
-    display: inline-block;
-    font-size: 15px;
-    margin: 15px 0 0 0;
-    cursor: pointer;
-    &:hover {
-      color: #4183c4;
-    }
+  p.date {
+    font-size: 14px;
+    margin: 0;
   }
 }
   div.infoDiv {

@@ -1,5 +1,5 @@
 <template>
-  <div class="blogDetail">
+  <div class="blogDetail" v-if="finish">
     <h1>{{ blogTitle }}</h1>
     <div v-html="blog_content">
     </div>
@@ -25,6 +25,8 @@ export default {
       blog_date: '',
       content_date: '',
       userIP: '',
+
+      finish: false,
     };
   },
   mounted() {
@@ -41,6 +43,8 @@ export default {
 
       this.formateDate();
       this.ipAddress(this.blogTitle);
+
+      this.finish = true;
     },
     formateDate() {
       let date = this.blog_date.split('T')[0].split('-');

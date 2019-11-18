@@ -1,29 +1,13 @@
 <template>
-  <div class="Statistic" v-if="fin">
-    <h1>Statistic</h1>
+  <div class="Statistic">
+    <div class="title">
+      <h1>Statistic</h1>
+    </div>
 
-    <view-table-article :barTableData="articleFormat"></view-table-article>
-    <view-table :lineTableData="ipInfoFormat"></view-table>
+    <view-table-article :barTableData="articleFormat" v-if="finishCondition.article"></view-table-article>
+    <view-table :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></view-table>
 
-
-    <button @click="showRawData = true" v-if="showRawData == false">Show raw data</button>
-    <button @click="showRawData = false" v-if="showRawData == true">Hide raw data</button>
-    <table v-if="showRawData">
-      <thead>
-        <tr>
-          <td>user_ip</td>
-          <td>view_date</td>
-          <td>view_title</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(info, index) in ipInfo" :key="index">
-          <td>{{info.user_ip}}</td>
-          <td>{{info.view_date}}</td>
-          <td>{{info.view_title}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Your IP: {{userIP}}</p>
   </div>
 </template>
 <script>
@@ -38,31 +22,44 @@
     data: function() {
       return {
         fin: false,
-        ipInfo: [],
         ipInfoFormat: [],
         articleFormat: [],
-        showRawData: false,
+
+        finishCondition: {
+          article: false,
+          userIP: false,
+        },
+        userIP: "",
       }
     },
     mounted() {
       this.init();
     },
     methods: {
-      async init() {
-        let response = await axios.get('/blog/getUserIP');
-        this.ipInfo = response.data.ipList;
+      init() {
+        let that = this;
+        axios.get('/blog/getArticleFormat').then(function(response) {
+          that.articleFormat = response.data.articleListFormat;
+          that.finishCondition.article = true;
+        });
 
-        response = await axios.get('/blog/getUserIPFormat');
-        this.ipInfoFormat = response.data.ipListFormat;
+        axios.get('/blog/getUserIPFormat').then(function(response) {
+          that.ipInfoFormat = response.data.ipListFormat;
+          that.finishCondition.userIP = true;
+        });
 
-        response = await axios.get('/blog/getArticleFormat');
-        this.articleFormat = response.data.articleListFormat;
-
-        this.fin = true;
+        axios.get('/blog/getUserIP').then(function(response) {
+          that.userIP = response.data.userIP;
+        })
       }
     }
   }
 </script>
 <style lang="less">
+  div.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 </style>
 

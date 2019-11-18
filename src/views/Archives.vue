@@ -13,9 +13,14 @@
       <li><a>Liferay实践回顾</a></li>
       <li><a>一个公司需要什么样的人才</a></li>
     </ul>
+    <h2>语言</h2>
+    <ul>
+      <li><a>托福回顾</a></li>
+    </ul>
 
     <h2>服务端</h2>
     <ul>
+      <li><a>博客搭建回顾</a></li>
       <li><a>服务端编程基础(Node)</a></li>
       <li><a href="/blogDetail?title=网络编程基础">网络编程基础</a></li>
     </ul>
@@ -66,4 +71,11 @@
   };
 </script>
 <style lang="less">
+  ul {
+    margin: 15px 0;
+    padding-left: 30px;
+    li {
+      line-height: 24px;
+    }
+  }
 </style>

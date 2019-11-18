@@ -2,29 +2,31 @@
   <div style="height: 100%;">
     <div id="app">
       <div id="header_nav">
-        <div id="header">
-          <!--<div class="imgContainer">-->
-            <!--<img src="./assets/jekyll-logo.png" />-->
-          <!--</div>-->
-          <div class="description">
-            <p class="h1">Xie Ruochen</p>
-            <p class="h2">Aiming for Modern Web Development</p>
+        <div class="header_nav_inner">
+          <div id="header">
+            <div class="description">
+              <p class="h1">Ruochen's Space</p>
+            </div>
           </div>
-        </div>
-        <div id="nav">
-          <router-link to="/">Blog</router-link>
-          <router-link to="/Archives">Archives</router-link>
-          <router-link to="/about">About</router-link>
-          <router-link to="/Statistic">Statistic</router-link>
+          <div id="nav">
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/">Blog</router-link>
+            <router-link to="/Archives">Archives</router-link>
+            <router-link to="/about">About</router-link>
+            <router-link to="/Statistic">Statistic</router-link>
+          </div>
         </div>
       </div>
 
 
-      <!--
-      view
-      -->
+      <!-- 路由出口 -->
+      <!-- 路由匹配到的组件将渲染在这里 -->
       <div id="main_content">
-        <router-view />
+        <!--<transition :name="transitionName">-->
+          <router-view />
+        <!--</transition>-->
       </div>
 
 
@@ -46,12 +48,8 @@
   export default {
     data: function() {
       return {
-        // processArray: ['test'],
-        // finishedIndex: 0,
+        transitionName: ''
       }
-    },
-    mounted() {
-      // console.log('processArray2', this.processArray);
     },
   }
 </script>
@@ -79,6 +77,13 @@ a {
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      .header_nav_inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
       #header {
         display: flex;
         flex-direction: column;
@@ -93,24 +98,30 @@ a {
       }
     }
     div#main_content {
-      padding: 132px 10px 96px 10px;
+      padding: 110px 10px 96px 10px;
     }
   }
 }
 #header_nav {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 0;
+
+  width: 100%;
+  padding: 20px 0px;
   border-bottom: 1px solid #eee;
   margin: 0 auto;
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 720px;
   background: white;
 
   z-index: 9999;
+  .header_nav_inner {
+    display: flex;
+    width: 720px;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   #header {
     display: flex;
     div.imgContainer {
@@ -169,7 +180,7 @@ a.mail {
 div#main_content {
   max-width: 720px;
   margin: 0 auto;
-  padding: 101px 10px 96px 10px;
+  padding: 79px 10px 96px 10px;
   a {
     display: inline-block;
     text-decoration: none;
@@ -312,5 +323,45 @@ strong, b {
 
 img {
   max-width: 100%;
+}
+
+
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-left-enter-active {
+  transition: all .3s ease;
+}
+.slide-left-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-left-enter, .slide-left-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+
+.slide-right-enter-active {
+  transition: all .3s ease;
+}
+.slide-right-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-right-enter, .slide-right-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transition: all .3s ease;
+}
+.slide-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-enter, .slide-leave-to
+  /* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(0px);
+  opacity: 0;
 }
 </style>
