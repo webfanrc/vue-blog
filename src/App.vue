@@ -135,7 +135,6 @@ a {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      margin-left: 10px;
       p {
         text-align: left;
         margin: 0;
