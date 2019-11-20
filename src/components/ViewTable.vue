@@ -58,7 +58,7 @@
             name: '时间',
             type: 'line',
             data: this.number,
-            smooth: true,
+            smooth: false,
             areaStyle: {
             }
           }]

@@ -63,6 +63,13 @@
         this.user_message = "";
         this.user_website = "";
 
+        let cookie = JSON.parse(this.getCookie("userCookie"));
+
+        if (cookie != 0) {
+          this.user_name = cookie.user_name;
+          this.user_email = cookie.user_email;
+          this.user_website = cookie.user_website;
+        }
 
         let that = this;
         let respons = await axios.get('/blog/getMessages', {
@@ -72,6 +79,15 @@
         });
         this.messageList = respons.data;
         this.messageNumber = this.messageList.length;
+      },
+      getCookie(name) {
+        let arr = document.cookie.split(";");
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].indexOf(`${name}={`) != -1) {
+            return arr[i].split("=")[1];
+          }
+        }
+        return 0;
       },
       async submit() {
         this.clients_message = "Sending...";
@@ -85,6 +101,12 @@
             message_for: that.groupArea,
           }
         });
+        let userCookie = {
+          user_name: that.user_name,
+          user_email: that.user_email,
+          user_website: that.user_website,
+        };
+        document.cookie = "userCookie=" + JSON.stringify(userCookie);
         if (respons.data != 0) {
           this.clients_message = "Send success.";
           this.init();
