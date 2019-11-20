@@ -177,7 +177,7 @@ a.mail {
   }
 }
 div#main_content {
-  max-width: 720px;
+  /*max-width: 720px;*/
   margin: 0 auto;
   padding: 79px 10px 96px 10px;
   a {

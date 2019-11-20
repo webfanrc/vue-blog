@@ -27,6 +27,7 @@
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "lint-staged": "^8.1.0",
+    "marked": "^0.7.0",
     "vue-echarts": "^4.0.4",
     "vue-template-compiler": "^2.5.21"
   },

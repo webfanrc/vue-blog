@@ -118,6 +118,10 @@
   }
 </script>
 <style lang="less">
+  .ComponentAndThoughts {
+    max-width: 720px;
+    margin: 0 auto;
+  }
   .common-box {
     padding: 6px 12px;
     text-transform: uppercase;
