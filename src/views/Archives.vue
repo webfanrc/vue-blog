@@ -40,7 +40,12 @@
     </ul>
     <h2>读书</h2>
     <ul>
+      <li><a>《局外人》读后感</a></li>
       <li><a>The Picture of DorianGray</a></li>
+    </ul>
+    <h2>其它</h2>
+    <ul>
+      <li><a>如何提高自控力</a></li>
     </ul>
   </div>
 </template>
