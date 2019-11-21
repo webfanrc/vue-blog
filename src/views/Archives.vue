@@ -70,7 +70,7 @@
     }
   };
 </script>
-<style lang="less">
+<style lang="less" scoped>
   ul {
     margin: 15px 0;
     padding-left: 30px;

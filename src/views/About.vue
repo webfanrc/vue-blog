@@ -129,7 +129,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   div.about {
     margin-bottom: 15px;
   }

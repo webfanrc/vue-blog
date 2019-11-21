@@ -68,7 +68,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 button.showInfo_control {
   border: 1px solid gray;
   border-radius: 5px;

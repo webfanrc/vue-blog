@@ -1,21 +1,22 @@
 <template>
   <div class="blogDetail" v-if="finish">
-    <h1>{{ blogTitle }}</h1>
+    <h1 class="title">{{ blogTitle }}</h1>
 
-    <div v-if="showTestArea">
-      <a @click="saveArticle">Save</a> |
-      <a @click="dontSave">Cancel</a>
+    <div class="control">
+      <a @click="showTestArea = true" v-if="!showTestArea">Edit</a>
+      <div v-if="showTestArea">
+        <a @click="saveArticle">Save</a> |
+        <a @click="dontSave">Cancel</a>
+      </div>
     </div>
 
-
-    <div class="magic-area">
-      <textarea v-model="blog_content" v-if="showTestArea == true"></textarea>
-      <div v-html="marked(blog_content)"></div>
+    <div class="containers">
+      <textarea v-model="blog_content" v-if="showTestArea == true" class="blogContentEdit"></textarea>
+      <div v-html="marked(blog_content)" class="blogContentShow" ref="blogContentShow"></div>
     </div>
 
     <div class="date">
       <p>{{content_date}}</p>
-      <a @click="showTestArea = true">Edit</a>
     </div>
 
     <comment-and-thoughts :groupArea="blogTitle"></comment-and-thoughts>
@@ -88,27 +89,27 @@ export default {
       }
     },
     saveArticle() {
+      let passport = prompt("Enter your passport");
       let that = this;
       axios.post('/blog/updateBlogContent', {
+        passport: passport,
         id: that.blogId,
         blog_content: that.blog_content,
       }, function(response) {
-      })
+      });
 
       that.showTestArea = false;
     },
     dontSave() {
       this.showTestArea = false;
+      this.init();
     }
 
   }
 };
 </script>
-<style lang="less">
-  div.blogDetail {
-    padding: 0 40px;
-  }
-  h1,
+<style lang="less" scoped>
+  h1.title,
   div.date {
     max-width: 720px;
     margin-left: auto;
@@ -117,19 +118,26 @@ export default {
   div.date {
     color: #666;
   }
-  div.magic-area {
-    display: flex;
-    justify-content: space-around;
-    textarea {
-      width: 47%;
+
+  div.control {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  div.containers {
+    max-width: 720px;
+    margin: 0 auto;
+    .blogContentEdit {
+      width: 100%;
+      height: 400px;
       font-size: 16px;
 
-      border: 2px solid darkgray;
+      border: 1px solid #ccc;
+      padding: 0.6em;
       border-radius: 3px;
 
     }
-    div {
-      width: 720px;
+    .blogContentShow {
+      max-width: 720px;
     }
   }
 </style>

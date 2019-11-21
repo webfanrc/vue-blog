@@ -1,3 +1,4 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
   lintOnSave: false,
   publicPath: './',
@@ -6,5 +7,4 @@ module.exports = {
   devServer: {
     port: 8081,
   },
-
 };

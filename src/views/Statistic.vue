@@ -55,7 +55,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   div.title {
     display: flex;
     align-items: center;
