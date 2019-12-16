@@ -6,11 +6,13 @@
       <div v-for="(message, index) in messageList" :key="index" class="messageBox" :id="'#comment-' + message.id">
         <div>
           <p v-if="message.user_website" class="name">
-            <a :href="message.user_website" target="_blank">{{message.user_name}}</a>
+            <a :href="message.user_website" target="_blank">
+              {{message.user_name == "" ? 'Anonymous' : message.user_name}}
+            </a>
           </p>
-          <p v-else class="name">{{message.user_name}}</p>
+          <p v-else class="name">{{message.user_name == "" ? 'Anonymous' : message.user_name}}</p>
 
-          <a class="sendDate" :href="'#comment-' + message.id">{{message.date}}</a>
+          <a class="sendDate" :href="'#comment' + message.id">{{message.date}}</a>
         </div>
 
         <p class="message">{{message.user_message}}</p>
@@ -120,7 +122,9 @@
 <style lang="less">
   .ComponentAndThoughts {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 40px auto 0;
+
+    border-top: 1px solid #eee;
   }
   .common-box {
     padding: 6px 12px;
