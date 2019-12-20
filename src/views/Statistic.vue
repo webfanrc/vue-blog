@@ -4,20 +4,33 @@
       <h1>Statistic</h1>
     </div>
 
-    <view-table-article :barTableData="articleFormat" v-if="finishCondition.article"></view-table-article>
-    <view-table :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></view-table>
+    <new-table-article :barTableData="articleFormat" v-if="finishCondition.article"></new-table-article>
 
-    <p>Your IP: {{userIP}}</p>
+    <!--<view-table-article :barTableData="articleFormat" v-if="finishCondition.article"></view-table-article>-->
+
+
+    <new-table-ip :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></new-table-ip>
+
+
+    <!--<view-table :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></view-table>-->
+
+    <p style="display: none">Your IP: {{userIP}}</p>
   </div>
 </template>
 <script>
   import axios from 'axios'
-  import ViewTable from '../components/ViewTable'
-  import ViewTableArticle from '../components/ViewTableArticle'
+  // import ViewTable from '../components/ViewTable'
+  // import ViewTableArticle from '../components/ViewTableArticle'
+  import NewTableArticle from '../components/NewTableArticle'
+  import NewTableIp from '../components/NewTableIp'
+
+  import Chart from 'chart.js'
   export default {
     components: {
-      ViewTable,
-      ViewTableArticle
+      // ViewTable,
+      // ViewTableArticle,
+      NewTableArticle,
+      NewTableIp
     },
     data: function() {
       return {

@@ -1,4 +1,3 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
   lintOnSave: false,
   publicPath: './',
