@@ -47,13 +47,19 @@
           Front-end web Development (In Bitmain.com, 4/2017 - 1/2019)
         </li>
       </ul>
+
+      <h2>Attachments</h2>
+      <ul>
+        <li><a :href="axios.defaults.baseURL + '/blog/PS'">Personnal Statement</a></li>
+      </ul>
     </div>
 
-    <comment-and-thoughts :groupArea="'About'"></comment-and-thoughts>
+    <!--<comment-and-thoughts :groupArea="'About'"></comment-and-thoughts>-->
   </div>
 </template>
 <script>
   import CommentAndThoughts from '../components/CommentAndThoughts'
+  import axios from 'axios';
   export default {
     name: 'About',
     components: {
@@ -120,6 +126,7 @@
           },
         ],
         demo_list_default: [],
+        axios: axios,
       }
     },
     mounted() {

@@ -102,18 +102,30 @@
             datasets: [{
               label: '# of articles',
               data: this.number,
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 1
+              backgroundColor: 'rgba(51, 113, 230, 0.69)',
+              borderColor: 'rgba(51, 113, 230, 1)',
+              borderWidth: 1,
+              showLine: false
             }]
           },
           options: {
             scales: {
+              xAxes: [{
+                gridLines: {
+                  color: "rgba(0, 0, 0, 0)",
+                }
+              }],
               yAxes: [{
                 ticks: {
-                  beginAtZero: true
+                  beginAtZero: false // ？
+                },
+                gridLines: {
+                  // color: "rgba(0, 0, 0, 0)",
                 }
               }]
+            },
+            tooltips: {
+              enabled: false
             }
           }
         });

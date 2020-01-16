@@ -7,6 +7,16 @@
         <p class="date">{{blog.date}}</p>
       </div>
 
+      <div class="commentsList">
+        <p>最新评论</p>
+        <ul>
+          <li v-for="(message, index) in messageList" :key="index">
+            <p>
+              <a @click="routerToBlogPage(message.message_for)">{{message.message_for}}</a>: {{message.user_message}}</p>
+          </li>
+        </ul>
+      </div>
+
     </template>
 
   </div>
@@ -23,6 +33,7 @@ export default {
       showInfo: true,
 
       userIP: '',
+      messageList: [],
     };
   },
   mounted() {
@@ -39,6 +50,7 @@ export default {
       this.userIP = response.data.userIP;
 
       this.ipAddress("main page");
+      this.getMessageList();
 
 
       this.fin = true;
@@ -65,6 +77,10 @@ export default {
         });
       }
     },
+    async getMessageList() {
+      let response = await axios.get('/blog/getMessageList', {});
+      this.messageList = response.data.articleListFormat;
+    }
   }
 };
 </script>
@@ -115,5 +131,28 @@ div.blogTag {
     width: 100%;
     margin-top: 10px;
     text-align: center;
+  }
+
+  div.commentsList {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 100px;
+    margin-right: 20px;
+    border: 1px solid #eee;
+    width: 250px;
+
+    display: none;
+    p {
+      word-break: break-all;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+
+    div.commentsList {
+
+      display: block;
+    }
   }
 </style>

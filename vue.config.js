@@ -3,7 +3,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
   lintOnSave: false,
   publicPath: './',
-  outputDir: '/data/www',
+  //outputDir: '/data/www',
   assetsDir: './',
   devServer: {
     port: 8081,
