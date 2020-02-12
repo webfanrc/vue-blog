@@ -12,7 +12,7 @@
 
     <!--<view-table :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></view-table>-->
 
-    <p style="display: none">Your IP: {{userIP}}</p>
+    <p>Your IP: {{userIP}}</p>
   </div>
 </template>
 <script>
@@ -21,7 +21,6 @@
   // import ViewTableArticle from '../components/ViewTableArticle'
   import NewTableArticle from '../components/NewTableArticle'
   import NewTableIp from '../components/NewTableIp'
-  import Chart from 'chart.js'
   export default {
     components: {
       // ViewTable,

@@ -8,11 +8,15 @@
       </div>
 
       <div class="commentsList">
-        <p>最新评论</p>
+        <h4>最新评论</h4>
         <ul>
           <li v-for="(message, index) in messageList" :key="index">
-            <p>
-              <a @click="routerToBlogPage(message.message_for)">{{message.message_for}}</a>: {{message.user_message}}</p>
+            <p v-if="message.message_for != 'About'" class="content">
+              <a @click="routerToBlogPage(message.message_for)">{{message.message_for}}</a>: {{message.user_message}}
+            </p>
+            <p v-else class="content">
+              <a @click="routerToAboutPage()">{{message.message_for}}</a>: {{message.user_message}}
+            </p>
           </li>
         </ul>
       </div>
@@ -57,6 +61,9 @@ export default {
     },
     routerToBlogPage(title) {
       this.$router.push({ path: "blogDetail", query: { title: title } });
+    },
+    routerToAboutPage() {
+      this.$router.push({ path: "about"});
     },
     // 当前用户这天没有访问过这个页面，
     // 记录用户IP以及点击的博客名称（为main时为主页）
@@ -143,8 +150,12 @@ div.blogTag {
     width: 250px;
 
     display: none;
+    padding: 10px;
     p {
       word-break: break-all;
+    }
+    p.content {
+      line-height: 20px;
     }
   }
 
