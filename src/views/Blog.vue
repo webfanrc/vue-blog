@@ -7,7 +7,7 @@
         <p class="date">{{blog.date}}</p>
       </div>
 
-      <div class="commentsList">
+      <div class="commentsList" style="display: none">
         <h4>最新评论</h4>
         <ul>
           <li v-for="(message, index) in messageList" :key="index">

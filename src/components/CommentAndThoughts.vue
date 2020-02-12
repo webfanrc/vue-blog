@@ -1,5 +1,5 @@
 <template>
-  <div class="ComponentAndThoughts">
+  <div class="ComponentAndThoughts" style="display: none">
     <div class="messageList" v-if="messageNumber > 0">
       <h2>{{messageNumber}} thoughts to "About"</h2>
 
