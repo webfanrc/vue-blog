@@ -1,0 +1,12 @@
+<template>
+  <div class="loading">
+    Loading...
+  </div>
+</template>
+
+<script>
+
+</script>
+<style>
+
+</style>

@@ -4,29 +4,25 @@
       <h1>Statistic</h1>
     </div>
 
-    <new-table-article :barTableData="articleFormat" v-if="finishCondition.article"></new-table-article>
-    <new-table-ip :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></new-table-ip>
-
-    <!--<view-table-article :barTableData="articleFormat" v-if="finishCondition.article"></view-table-article>-->
-
-
-    <!--<view-table :lineTableData="ipInfoFormat" v-if="finishCondition.userIP"></view-table>-->
+    <new-table-article :barTableData="articleFormat"></new-table-article>
+    <new-table-ip :lineTableData="ipInfoFormat"></new-table-ip>
 
     <p>Your IP: {{userIP}}</p>
   </div>
 </template>
 <script>
   import axios from 'axios'
-  // import ViewTable from '../components/ViewTable'
-  // import ViewTableArticle from '../components/ViewTableArticle'
-  import NewTableArticle from '../components/NewTableArticle'
-  import NewTableIp from '../components/NewTableIp'
+  import LoadingComponent from '../components/LoadingComponent'
   export default {
     components: {
-      // ViewTable,
-      // ViewTableArticle,
-      NewTableArticle,
-      NewTableIp
+      'NewTableArticle': ()=> ({
+        component: import('../components/NewTableArticle'),
+        loading: LoadingComponent,
+      }),
+      'NewTableIp': ()=> ({
+        component: import('../components/NewTableIp'),
+        loading: LoadingComponent,
+      }),
     },
     data: function() {
       return {
