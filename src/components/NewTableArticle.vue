@@ -6,20 +6,28 @@
 </template>
 <script>
   import Chart from 'chart.js'
+  import axios from 'axios'
   export default {
     name: 'NewTableArticle',
     data() {
       return {
         time: [],
         number: [],
+        barTableData: {}
       }
     },
-    props: ['barTableData'],
     mounted() {
-      this.setData();
-      this.init();
+      this.getData();
     },
     methods: {
+      getData() {
+        let that = this
+        axios.get('/blog/getArticleFormat').then(function(response) {
+          that.barTableData = response.data.articleListFormat;
+          that.setData();
+          that.init();
+        });
+      },
       setData() {
         let that = this;
 

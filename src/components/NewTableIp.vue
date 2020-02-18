@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+  import axios from 'axios';
   import Chart from 'chart.js'
   export default {
     name: 'NewTableIp',
@@ -12,14 +13,21 @@
       return {
         time: [],
         number: [],
+        lineTableData: {}
       }
     },
-    props: ['lineTableData'],
     mounted() {
-      this.setData();
-      this.init();
+      this.getData();
     },
     methods: {
+      getData() {
+        let that = this
+        axios.get('/blog/getUserIPFormat').then(function(response) {
+          that.lineTableData = response.data.ipListFormat;
+          that.setData();
+          that.init();
+        });
+      },
       setData() {
         let that = this;
         this.lineTableData.forEach(function(n) {
