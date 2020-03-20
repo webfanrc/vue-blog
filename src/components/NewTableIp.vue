@@ -22,7 +22,7 @@
     methods: {
       getData() {
         let that = this
-        axios.get('/blog/getUserIPFormat').then(function(response) {
+        axios.get('/statistic/ip').then(function(response) {
           that.lineTableData = response.data.ipListFormat;
           that.setData();
           that.init();

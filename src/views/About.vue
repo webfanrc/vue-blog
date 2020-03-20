@@ -58,12 +58,10 @@
   </div>
 </template>
 <script>
-  import CommentAndThoughts from '../components/CommentAndThoughts'
   import axios from 'axios';
   export default {
     name: 'About',
     components: {
-      CommentAndThoughts,
     },
     data: function() {
       return {

@@ -22,7 +22,7 @@
     methods: {
       getData() {
         let that = this
-        axios.get('/blog/getArticleFormat').then(function(response) {
+        axios.get('/statistic/article').then(function(response) {
           that.barTableData = response.data.articleListFormat;
           that.setData();
           that.init();

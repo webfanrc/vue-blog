@@ -19,17 +19,17 @@
       <p>{{content_date}}</p>
     </div>
 
-    <comment-and-thoughts :groupArea="blogTitle"></comment-and-thoughts>
+    <!--<comment-and-thoughts :groupArea="blogTitle"></comment-and-thoughts>-->
   </div>
 </template>
 <script>
 import axios from 'axios';
-import CommentAndThoughts from '../components/CommentAndThoughts'
+// import CommentAndThoughts from '../components/CommentAndThoughts'
 import marked from 'marked';
 export default {
   name: "blogDetail",
   components: {
-    CommentAndThoughts,
+    // CommentAndThoughts,
   },
   data: function() {
     return {
@@ -54,11 +54,11 @@ export default {
       this.blog_date = response.data[0].create_date;
       this.blogId = response.data[0].id;
 
-      response = await axios.get('/blog/getUserIP');
-      this.userIP = response.data.userIP;
+      // response = await axios.get('/blog/getUserIP');
+      // this.userIP = response.data.userIP;
 
       this.formateDate();
-      this.ipAddress(this.blogTitle);
+      // this.ipAddress(this.blogTitle);
 
       this.finish = true;
     },
@@ -91,7 +91,7 @@ export default {
     saveArticle() {
       let passport = prompt("Enter your passport");
       let that = this;
-      axios.post('/blog/updateBlogContent', {
+      axios.post('/blog/update', {
         passport: passport,
         id: that.blogId,
         blog_content: that.blog_content,

@@ -49,12 +49,12 @@ export default {
       let response = await axios.get('/blog/');
       this.blogInfo = response.data;
 
-      response = await axios.get('/blog/getUserIP');
+      // response = await axios.get('/blog/getUserIP');
 
       this.userIP = response.data.userIP;
 
-      this.ipAddress("main page");
-      this.getMessageList();
+      // this.ipAddress("main page");
+      // this.getMessageList();
 
 
       this.fin = true;
