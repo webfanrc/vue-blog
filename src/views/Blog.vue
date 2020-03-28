@@ -6,21 +6,6 @@
         <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
         <p class="date">{{blog.date}}</p>
       </div>
-
-      <div class="commentsList" style="display: none">
-        <h4>最新评论</h4>
-        <ul>
-          <li v-for="(message, index) in messageList" :key="index">
-            <p v-if="message.message_for != 'About'" class="content">
-              <a @click="routerToBlogPage(message.message_for)">{{message.message_for}}</a>: {{message.user_message}}
-            </p>
-            <p v-else class="content">
-              <a @click="routerToAboutPage()">{{message.message_for}}</a>: {{message.user_message}}
-            </p>
-          </li>
-        </ul>
-      </div>
-
     </template>
 
   </div>
@@ -46,15 +31,11 @@ export default {
   methods: {
     async init() {
 
-      let response = await axios.get('/blog/');
+      let response = await axios.get('/blog/lists');
       this.blogInfo = response.data;
 
-      // response = await axios.get('/blog/getUserIP');
 
       this.userIP = response.data.userIP;
-
-      // this.ipAddress("main page");
-      // this.getMessageList();
 
 
       this.fin = true;

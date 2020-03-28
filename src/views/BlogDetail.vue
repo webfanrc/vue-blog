@@ -17,19 +17,17 @@
 
     <div class="date">
       <p>{{content_date}}</p>
+      <p v-if="content_edit_date != ''">Edit on: {{content_edit_date}}</p>
     </div>
 
-    <!--<comment-and-thoughts :groupArea="blogTitle"></comment-and-thoughts>-->
   </div>
 </template>
 <script>
 import axios from 'axios';
-// import CommentAndThoughts from '../components/CommentAndThoughts'
-import marked from 'marked';
+import marked from 'marked'; // md -> html
 export default {
   name: "blogDetail",
   components: {
-    // CommentAndThoughts,
   },
   data: function() {
     return {
@@ -37,6 +35,7 @@ export default {
       blog_content: '',
       blog_date: '',
       content_date: '',
+      content_edit_date: '',
       userIP: '',
       blogId: '',
 
@@ -52,6 +51,7 @@ export default {
       let response = await axios.get(`/blog/detail?title=${this.blogTitle}`);
       this.blog_content = response.data[0].content;
       this.blog_date = response.data[0].create_date;
+      this.blog_edit_date = response.data[0].edit_date;
       this.blogId = response.data[0].id;
 
       // response = await axios.get('/blog/getUserIP');
@@ -68,6 +68,11 @@ export default {
     formateDate() {
       let date = this.blog_date.split('T')[0].split('-');
       this.content_date = date[0] + '年' + date[1] + '月' + date[2] + '日';
+
+      if (this.blog_edit_date != null) {
+        date = this.blog_edit_date.split('T')[0].split('-');
+        this.content_edit_date = date[0] + '年' + date[1] + '月' + date[2] + '日';
+      }
     },
     // 当前用户这天没有访问过这个页面，
     // 记录用户IP以及点击的博客名称（为main时为主页）
@@ -95,9 +100,13 @@ export default {
         passport: passport,
         id: that.blogId,
         blog_content: that.blog_content,
-      }, function(response) {
-      });
-
+      })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error)
+        });
       that.showTestArea = false;
     },
     dontSave() {
