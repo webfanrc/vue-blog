@@ -21,7 +21,6 @@ export default {
       fin: false,
       showInfo: true,
 
-      userIP: '',
       messageList: [],
     };
   },
@@ -34,41 +33,11 @@ export default {
       let response = await axios.get('/blog/lists');
       this.blogInfo = response.data;
 
-
-      this.userIP = response.data.userIP;
-
-
       this.fin = true;
     },
     routerToBlogPage(title) {
       this.$router.push({ path: "blogDetail", query: { title: title } });
     },
-    routerToAboutPage() {
-      this.$router.push({ path: "about"});
-    },
-    // 当前用户这天没有访问过这个页面，
-    // 记录用户IP以及点击的博客名称（为main时为主页）
-    async ipAddress(title) {
-      let that = this;
-      let response = await axios.get('/blog/ipFilter', {
-        params: {
-          user_ip: that.userIP,
-          view_title: title,
-        }
-      });
-      if (response.data == false) {
-        await axios.get('/blog/ipAddress', {
-          params: {
-            user_ip: that.userIP,
-            view_title: title,
-          }
-        });
-      }
-    },
-    async getMessageList() {
-      let response = await axios.get('/blog/getMessageList', {});
-      this.messageList = response.data.articleListFormat;
-    }
   }
 };
 </script>

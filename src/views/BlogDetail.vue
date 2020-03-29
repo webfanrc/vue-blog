@@ -10,8 +10,18 @@
       </div>
     </div>
 
+    <div class="containers" v-if="showTestArea == true">
+      <label for="edit_title">Title: </label>
+      <input v-model="blog_title" id="edit_title"></input>
+      <br>
+      <label for="edit_tag">Tag: </label>
+      <input v-model="blog_tag" id="edit_tag"></input>
+      <br>
+      <textarea v-model="blog_content" class="blogContentEdit" id="edit_content"></textarea>
+    </div>
+
+
     <div class="containers">
-      <textarea v-model="blog_content" v-if="showTestArea == true" class="blogContentEdit"></textarea>
       <div v-html="marked(blog_content)" class="blogContentShow" ref="blogContentShow"></div>
     </div>
 
@@ -32,6 +42,8 @@ export default {
   data: function() {
     return {
       blogTitle: this.$route.query.title,
+      blog_title: this.$route.query.title,
+      blog_tag: '',
       blog_content: '',
       blog_date: '',
       content_date: '',
@@ -50,6 +62,7 @@ export default {
     async init() {
       let response = await axios.get(`/blog/detail?title=${this.blogTitle}`);
       this.blog_content = response.data[0].content;
+      this.blog_tag = response.data[0].tag;
       this.blog_date = response.data[0].create_date;
       this.blog_edit_date = response.data[0].edit_date;
       this.blogId = response.data[0].id;
@@ -100,6 +113,8 @@ export default {
         passport: passport,
         id: that.blogId,
         blog_content: that.blog_content,
+        blog_title: that.blog_title,
+        blog_tag: that.blog_tag,
       })
         .then(function(response) {
           console.log(response);
@@ -135,6 +150,10 @@ export default {
   div.containers {
     max-width: 720px;
     margin: 0 auto;
+    label {
+      display: inline-block;
+      min-width: 50px;
+    }
     .blogContentEdit {
       width: 100%;
       height: 400px;

@@ -7,44 +7,36 @@
     <new-table-article></new-table-article>
     <new-table-ip></new-table-ip>
 
-    <p>Your IP: {{userIP}}</p>
   </div>
 </template>
 <script>
   import axios from 'axios'
   import LoadingComponent from '../components/LoadingComponent'
+  import ErrorComponent from '../components/ErrorComponent'
   export default {
     components: {
       'NewTableArticle': ()=> ({
         component: import('../components/NewTableArticle'),
         loading: LoadingComponent,
-        delay: 200,
+        error: ErrorComponent,
+        delay: 0,
+        timeout: 30000,
       }),
       'NewTableIp': ()=> ({
         component: import('../components/NewTableIp'),
         loading: LoadingComponent,
-        delay: 200,
+        error: ErrorComponent,
+        delay: 0,
+        timeout: 30000,
       }),
     },
     data: function() {
       return {
-        fin: false,
-        ipInfoFormat: [],
-        articleFormat: [],
-        userIP: "",
       }
     },
     mounted() {
-      this.init();
     },
     methods: {
-      init() {
-        let that = this;
-
-        axios.get('/blog/getUserIP').then(function(response) {
-          that.userIP = response.data.userIP;
-        })
-      }
     }
   }
 </script>
