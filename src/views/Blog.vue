@@ -2,7 +2,7 @@
   <div class="blog">
 
     <template v-if="fin">
-      <div v-for="(blog, index) in blogInfo.blogList" class="blogTag" :key="index">
+      <div v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
         <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
         <p class="date">{{blog.date}}</p>
       </div>
