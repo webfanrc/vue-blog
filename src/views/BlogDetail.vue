@@ -1,6 +1,6 @@
 <template>
   <div class="blogDetail" v-if="finish">
-    <h1 class="title">{{ blogTitle }}</h1>
+    <h1 class="title">{{ blog_title }}</h1>
 
     <div class="control">
       <a @click="showTestArea = true" v-if="!showTestArea">Edit</a>
@@ -41,15 +41,14 @@ export default {
   },
   data: function() {
     return {
-      blogTitle: this.$route.query.title,
-      blog_title: this.$route.query.title,
+      blog_id: this.$route.query.id,
+      blog_title: '',
       blog_tag: '',
       blog_content: '',
       blog_date: '',
       content_date: '',
       content_edit_date: '',
       userIP: '',
-      blogId: '',
 
       finish: false,
       showTestArea: false,
@@ -60,18 +59,17 @@ export default {
   },
   methods: {
     async init() {
-      let response = await axios.get(`/blog/detail?title=${this.blogTitle}`);
+      let response = await axios.get(`/blog/detail?id=${this.blog_id}`);
+
+
+      this.blog_title = response.data[0].title;
       this.blog_content = response.data[0].content;
       this.blog_tag = response.data[0].tag;
       this.blog_date = response.data[0].create_date;
       this.blog_edit_date = response.data[0].edit_date;
-      this.blogId = response.data[0].id;
 
-      // response = await axios.get('/blog/getUserIP');
-      // this.userIP = response.data.userIP;
 
       this.formateDate();
-      // this.ipAddress(this.blogTitle);
 
       this.finish = true;
     },
@@ -85,25 +83,6 @@ export default {
       if (this.blog_edit_date != null) {
         date = this.blog_edit_date.split('T')[0].split('-');
         this.content_edit_date = date[0] + '年' + date[1] + '月' + date[2] + '日';
-      }
-    },
-    // 当前用户这天没有访问过这个页面，
-    // 记录用户IP以及点击的博客名称（为main时为主页）
-    async ipAddress(title) {
-      let that = this;
-      let response = await axios.get('/blog/ipFilter', {
-        params: {
-          user_ip: that.userIP,
-          view_title: title,
-        }
-      });
-      if (response.data == false) {
-        await axios.get('/blog/ipAddress', {
-          params: {
-            user_ip: that.userIP,
-            view_title: title,
-          }
-        });
       }
     },
     saveArticle() {

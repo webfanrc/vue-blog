@@ -3,7 +3,7 @@
 
     <template v-if="fin">
       <div v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
-        <p class="h1" @click="routerToBlogPage(blog.title)">{{ blog.title }}</p>
+        <p class="h1" @click="routerToBlogPage(blog.id)">{{ blog.title }}</p>
         <p class="date">{{blog.date}}</p>
       </div>
     </template>
@@ -35,8 +35,8 @@ export default {
 
       this.fin = true;
     },
-    routerToBlogPage(title) {
-      this.$router.push({ path: "blogDetail", query: { title: title } });
+    routerToBlogPage(id) {
+      this.$router.push({ path: "blogDetail", query: { id: id } });
     },
   }
 };
