@@ -1,20 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-
-
-
-// import Blog from "./views/Blog";
-// import About from "./views/About";
-// import BlogDetail from "./views/BlogDetail";
-// import Statistic from "./views/Statistic";
-// import Archives from "./views/Archives"
-
 const Blog = () => import('./views/Blog');
 const About = () => import('./views/About');
 const BlogDetail = () => import('./views/BlogDetail');
 const Statistic = () => import('./views/Statistic');
 const Archives = () => import('./views/Archives');
+const BlogEdit = ()=> import('./views/BlogEdit');
 
 Vue.use(Router);
 
@@ -45,6 +37,11 @@ export default new Router({
       path: "/Archives",
       name: "Archives",
       component: Archives
+    },
+    {
+      path: "/BlogEdit",
+      name: "BlogEdit",
+      component: BlogEdit
     }
   ],
   scrollBehavior (to, from, savedPosition) {
