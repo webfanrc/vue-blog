@@ -7,6 +7,7 @@ const BlogDetail = () => import('./views/BlogDetail');
 const Statistic = () => import('./views/Statistic');
 const Archives = () => import('./views/Archives');
 const BlogEdit = ()=> import('./views/BlogEdit');
+const BlogNew = ()=> import('./views/BlogNew');
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ export default new Router({
       path: "/BlogEdit",
       name: "BlogEdit",
       component: BlogEdit
+    },
+    {
+      path: "/BlogNew",
+      name: "BlogNew",
+      component: BlogNew
     }
   ],
   scrollBehavior (to, from, savedPosition) {

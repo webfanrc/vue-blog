@@ -4,6 +4,7 @@
       Archives
     </h1>
 
+
     <div class="tagsAndArticles">
       <ul class="articles">
         <li v-for="(blog, n) in blogs" :key="n">
@@ -12,6 +13,11 @@
       </ul>
 
       <div class="tags">
+
+        <div class="control">
+          <a @click="routerToNewPage()">New</a>
+        </div>
+
         <p class="title">Tags:</p>
         <div class="tag">
           <span @click="all()">
@@ -65,6 +71,9 @@
           that.blogs = response.data;
         })
       },
+      routerToNewPage() {
+        this.$router.push({ path: "blogNew" });
+      }
     }
   };
 </script>

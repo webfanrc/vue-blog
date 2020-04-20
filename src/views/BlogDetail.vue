@@ -2,16 +2,6 @@
   <div class="blogDetail" v-if="finish">
     <h1 class="title">{{ blogData.title }}</h1>
 
-    <!--<div class="containers" v-if="showTestArea == true">-->
-      <!--<label for="edit_title">Title: </label>-->
-      <!--<input v-model="blog_title" id="edit_title"></input>-->
-      <!--<br>-->
-      <!--<label for="edit_tag">Tag: </label>-->
-      <!--<input v-model="blog_tag" id="edit_tag"></input>-->
-      <!--<br>-->
-      <!--<textarea v-model="blog_content" class="blogContentEdit" id="edit_content"></textarea>-->
-    <!--</div>-->
-
 
     <div class="containers">
       <div v-html="marked(blogData.content)" class="blogContentShow" ref="blogContentShow"></div>
@@ -20,15 +10,13 @@
     <div class="date_control">
       <div class="date">
         <p>{{blogData.create_date}}</p>
-        <p v-if="blogData.edit_date != ''">Edit on: {{blogData.edit_date}}</p>
+        <p v-if="blogData.edit_date">Edit on: {{blogData.edit_date}}</p>
       </div>
 
-      <div class="control">
-        <a @click="routerToEditPage(blog_id)">Edit</a>
-        <!--<div v-if="showTestArea">-->
-        <!--<a @click="saveArticle">Save</a> |-->
-        <!--<a @click="dontSave">Cancel</a>-->
-        <!--</div>-->
+      <div>
+        <div class="control">
+          <a @click="routerToEditPage(blog_id)">Edit</a>
+        </div>
       </div>
     </div>
   </div>
@@ -69,31 +57,9 @@ export default {
     marked(string) {
       return marked(string)
     },
-    saveArticle() {
-      let passport = prompt("Enter your passport");
-      let that = this;
-      axios.post('/blog/update', {
-        passport: passport,
-        id: that.blogId,
-        blog_content: that.blog_content,
-        blog_title: that.blog_title,
-        blog_tag: that.blog_tag,
-      })
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error)
-        });
-      that.showTestArea = false;
-    },
-    dontSave() {
-      this.showTestArea = false;
-      this.init();
-    },
     routerToEditPage(id) {
       this.$router.push({ path: "blogEdit", query: { id: id } });
-    }
+    },
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="blogEdit" v-if="finish">
+  <div class="blogEdit">
     <p>
       <label for="title">Title: </label>
       <input v-model="blogData.title" id="title"></input>
@@ -13,7 +13,6 @@
     <textarea v-model="blogData.content" class="blogContentEdit"></textarea>
 
     <button @click="saveArticle">Save</button>
-    <button @click="deleteArticle">Delete</button>
   </div>
 </template>
 
@@ -25,7 +24,6 @@
       return {
         blog_id: this.$route.query.id,
         blogData: {},
-        finish: false,
       }
     },
     mounted() {
@@ -33,17 +31,6 @@
     },
     methods: {
       init() {
-        let that = this;
-        axios.get(`/blog/detail?id=${this.blog_id}`)
-          .then(function (response) {
-            that.blogData = response.data;
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-          .then(function () {
-            that.finish = true;
-          });
       },
       marked(string) {
         return marked(string)
@@ -51,9 +38,8 @@
       saveArticle() {
         let passport = prompt("Enter your passport");
         let that = this;
-        axios.post('/blog/update', {
+        axios.post('/blog/new', {
           passport: passport,
-          id: that.blog_id,
           blog_content: that.blogData.content,
           blog_title: that.blogData.title,
           blog_tag: that.blogData.tag,
@@ -61,28 +47,7 @@
           .then(function(response) {
             console.log(response);
             if (response.data.code == 0) {
-              that.$router.push({ path: "blogDetail", query: { id: that.blog_id } });
-            } else {
-              alert(response.data.message);
-            }
-          })
-          .catch(function(error) {
-            console.log(error)
-          })
-          .then(function() {
-          });
-      },
-      deleteArticle() {
-        let passport = prompt("Enter your passport");
-        let that = this;
-        axios.post('/blog/delete', {
-          passport: passport,
-          id: that.blog_id,
-        })
-          .then(function(response) {
-            console.log(response);
-            if (response.data.code == 0) {
-              that.$router.push({ path: "/"});
+              that.$router.push({ path: "blogDetail", query: { id: response.data.id } });
             } else {
               alert(response.data.message);
             }
