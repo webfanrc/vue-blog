@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import service from '../utils/http';
   import marked from 'marked'; // md -> html
   export default {
     data: function() {
@@ -34,7 +34,7 @@
     methods: {
       init() {
         let that = this;
-        axios.get(`/blog/detail?id=${this.blog_id}`)
+        service.get(`/blog/detail?id=${this.blog_id}`)
           .then(function (response) {
             that.blogData = response.data;
           })
@@ -51,7 +51,7 @@
       saveArticle() {
         let passport = prompt("Enter your passport");
         let that = this;
-        axios.post('/blog/update', {
+        service.post('/blog/update', {
           passport: passport,
           id: that.blog_id,
           blog_content: that.blogData.content,
@@ -75,7 +75,7 @@
       deleteArticle() {
         let passport = prompt("Enter your passport");
         let that = this;
-        axios.post('/blog/delete', {
+        service.post('/blog/delete', {
           passport: passport,
           id: that.blog_id,
         })

@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+  import service from '../utils/http';
   export default {
     name: "archives",
     data: function() {
@@ -50,13 +50,13 @@
     methods: {
       init() {
         let that = this;
-        axios.get('/blog/distinct').then(function(response) {
+        service.get('/blog/distinct').then(function(response) {
           that.tags = response.data;
         })
       },
       tagChange(tag) {
         let that = this;
-        axios.get('/blog/tagChange', {
+        service.get('/blog/tagChange', {
           params: {
             tag: tag,
           }
@@ -66,7 +66,7 @@
       },
       all() {
         let that = this;
-        axios.get('/blog/all')
+        service.get('/blog/all')
         .then(function(response) {
           that.blogs = response.data;
         })

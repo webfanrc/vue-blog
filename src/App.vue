@@ -21,12 +21,18 @@
       </div>
 
 
-      <!-- 路由出口 -->
-      <!-- 路由匹配到的组件将渲染在这里 -->
+
       <div id="main_content">
-        <!--<transition :name="transitionName">-->
+
+        <div class="request-loading" :class="{'request-loading-show': $store.state.requestLoading}">
+          <div class="loading-module">
+            <img src="./assets/Spinner-1s-100px.gif">
+          </div>
+        </div>
+
+        <transition name="fade-transform" mode="out-in">
           <router-view />
-        <!--</transition>-->
+        </transition>
       </div>
 
 
@@ -46,15 +52,26 @@
 </template>
 <script>
   export default {
+    name: 'Main',
     data: function() {
       return {
-        transitionName: ''
+        requestLoading: this.$store.state.requestLoading
       }
     },
   }
 </script>
 
 <style lang="less">
+.request-loading {
+  display: none;
+}
+.request-loading-show {
+  display: block;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50px, 0);
+}
 a {
   color: #4183C4;
   text-decoration: none;

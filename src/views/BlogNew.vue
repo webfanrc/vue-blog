@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import service from '../utils/http';
   import marked from 'marked'; // md -> html
   export default {
     data: function() {
@@ -38,7 +38,7 @@
       saveArticle() {
         let passport = prompt("Enter your passport");
         let that = this;
-        axios.post('/blog/new', {
+        service.post('/blog/new', {
           passport: passport,
           blog_content: that.blogData.content,
           blog_title: that.blogData.title,

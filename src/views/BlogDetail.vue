@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import service from '../utils/http';
 import marked from 'marked'; // md -> html
 export default {
   name: "blogDetail",
@@ -43,7 +43,7 @@ export default {
   methods: {
     init() {
       let that = this;
-      axios.get(`/blog/detail?id=${this.blog_id}`)
+      service.get(`/blog/detail?id=${this.blog_id}`)
         .then(function (response) {
           that.blogData = response.data;
         })

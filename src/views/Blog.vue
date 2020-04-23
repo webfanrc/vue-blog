@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import service from '../utils/http';
 export default {
   name: "blog",
   data: function() {
@@ -30,7 +30,7 @@ export default {
   methods: {
     async init() {
 
-      let response = await axios.get('/blog/lists');
+      let response = await service.get('/blog/lists');
       this.blogInfo = response.data;
 
       this.fin = true;
