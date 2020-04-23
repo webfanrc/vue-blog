@@ -8,7 +8,7 @@
     <div class="tagsAndArticles">
       <ul class="articles">
         <li v-for="(blog, n) in blogs" :key="n">
-          <a :href="'/blogDetail?title=' +blog.title">{{blog.title}}</a>
+          <a :href="'/blogDetail?id=' +blog.id">{{blog.title}}</a>
         </li>
       </ul>
 
