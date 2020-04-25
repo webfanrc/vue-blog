@@ -2,7 +2,6 @@
   <div class="blogDetail" v-if="finish">
     <h1 class="title">{{ blogData.title }}</h1>
 
-
     <div class="containers">
       <div v-html="marked(blogData.content)" class="blogContentShow" ref="blogContentShow"></div>
     </div>
@@ -19,6 +18,12 @@
         </div>
       </div>
     </div>
+
+    <div>
+      <p>
+        Reading：{{statistic.count}}
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -32,6 +37,7 @@ export default {
     return {
       blog_id: this.$route.query.id,
       blogData: {},
+      statistic: {},
 
       finish: false,
       showTestArea: false,
@@ -53,6 +59,10 @@ export default {
         .then(function () {
           that.finish = true;
         });
+      service.get(`/statistic/readAmount?id=${this.blog_id}`)
+        .then(function (response) {
+          that.statistic = response.data;
+        })
     },
     marked(string) {
       return marked(string)
