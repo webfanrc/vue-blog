@@ -6,9 +6,14 @@
       <div v-html="marked(blogData.content)" class="blogContentShow" ref="blogContentShow"></div>
     </div>
 
-    <div class="date_control">
-      <div class="date">
-        <p>{{blogData.create_date}}</p>
+    <div class="i">
+      <div class="info">
+        <p>
+          <span class="mr-18">{{blogData.create_date}}</span>
+          <span>
+            阅读：{{statistic.count}}
+          </span>
+        </p>
         <p v-if="blogData.edit_date">Edit on: {{blogData.edit_date}}</p>
       </div>
 
@@ -17,12 +22,6 @@
           <a @click="routerToEditPage(blog_id)">Edit</a>
         </div>
       </div>
-    </div>
-
-    <div>
-      <p>
-        Reading：{{statistic.count}}
-      </p>
     </div>
   </div>
 </template>
@@ -75,7 +74,7 @@ export default {
 </script>
 <style lang="less" scoped>
   h1.title,
-  div.date {
+  div.info {
     max-width: 720px;
     margin-left: 0;
     margin-right: auto;
@@ -83,15 +82,19 @@ export default {
       margin: 0;
     }
   }
-  div.date {
+  div.info {
     color: #666;
+  }
+  .mr-18 {
+    display: inline-block;
+    margin-right: 18px;
   }
 
   div.control {
     max-width: 720px;
     margin: 0;
   }
-  div.date_control {
+  div.i {
     display: flex;
     flex-direction: row;
     align-items: center;
