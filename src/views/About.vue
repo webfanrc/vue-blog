@@ -70,7 +70,7 @@
           {
             name: "Personal Blog",
             description: "using Vue.js and Node.js, build on Amazon Lightsail, main functions are leaving message and IP statics, have mobile page.",
-            source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/node-blog"],
+            source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
             online_link: "http://xieruochen.info"
           },
           {
@@ -99,7 +99,7 @@
           {
             name: "个人博客",
             description: "前端用了Vue，后端用了Node.js，数据库为mysql，server为Nginx，云服务器为Amazon Lightsail，主要功能有留言、IP统计，适配手机端。",
-            source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/node-blog"],
+            source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
             online_link: "http://xieruochen.info"
           },
           {

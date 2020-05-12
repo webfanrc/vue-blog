@@ -15,15 +15,18 @@
       <div class="tags">
 
         <div class="control">
-          <a @click="routerToNewPage()">New</a>
+          <p>
+            <a @click="routerToNewPage()">New</a>
+          </p>
+          <p>
+            <a @click="all()">All</a>
+          </p>
+          <p>
+            <a @click="orderByReading()">Order By Reading</a>
+          </p>
         </div>
 
         <p class="title">Tags:</p>
-        <div class="tag">
-          <span @click="all()">
-            All
-          </span>
-        </div>
         <div v-for="(tag, n) in tags" :key="n" class="tag">
           <span @click="tagChange(tag.tag)">
             {{tag.tag}}
@@ -71,6 +74,13 @@
           that.blogs = response.data;
         })
       },
+      orderByReading() {
+        let that = this;
+        service.get('/statistic/orderByReading')
+          .then(function(response) {
+            that.blogs = response.data;
+          })
+      },
       routerToNewPage() {
         this.$router.push({ path: "blogNew" });
       }
@@ -78,11 +88,15 @@
   };
 </script>
 <style lang="less" scoped>
+
   ul {
     margin: 15px 0;
     padding-left: 30px;
     li {
-      line-height: 24px;
+      line-height: 34px;
+      span {
+        cursor: pointer;
+      }
     }
   }
   div.tagsAndArticles {
@@ -90,8 +104,17 @@
     flex-direction: row;
     justify-content: space-between;
   }
+  div.control {
+    p {
+      width: 150px;
+      line-height: 34px;
+      padding: 0;
+      margin: 0;
+    }
+  }
   div.tags {
     width: 150px;
+    line-height: 34px;
     p.title {
       border-bottom: 1px dotted gray;
       margin: 0;
@@ -99,7 +122,6 @@
     }
     div.tag {
       border-bottom: 1px dotted gray;
-      padding: 3px 0;
     }
     div.tag span:hover {
       background-color: #3377aa;
