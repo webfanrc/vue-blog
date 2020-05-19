@@ -2,19 +2,20 @@
   <div class="blogDetail" v-if="finish">
     <h1 class="title">{{ blogData.title }}</h1>
 
-    <div class="containers">
-      <div v-html="marked(blogData.content)" class="blogContentShow" ref="blogContentShow"></div>
-    </div>
-
     <div class="i">
       <div class="info">
         <p>
-          <span class="mr-18">{{blogData.create_date}}</span>
-          <span>
-            阅读：{{statistic.count}}
-          </span>
+          <img src="../assets/calendar-day.svg">
+          <span>发布日期：{{blogData.create_date}}</span>
         </p>
-        <p v-if="blogData.edit_date">Edit on: {{blogData.edit_date}}</p>
+        <p v-if="blogData.edit_date && blogData.edit_date != blogData.create_date">
+          <img src="../assets/calendar-plus.svg">
+          <span>编辑日期：{{blogData.edit_date}}</span>
+        </p>
+        <p>
+          <img src="../assets/view.svg">
+          <span>阅读次数：{{statistic.count}}</span>
+        </p>
       </div>
 
       <div>
@@ -22,6 +23,10 @@
           <a @click="routerToEditPage(blog_id)">Edit</a>
         </div>
       </div>
+    </div>
+
+    <div class="containers">
+      <div v-html="marked(blogData.content)" class="blogContentShow" ref="blogContentShow"></div>
     </div>
   </div>
 </template>
@@ -82,8 +87,27 @@ export default {
       margin: 0;
     }
   }
+  div.i {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
   div.info {
+    display: flex;
+    flex-wrap: wrap;
     color: #666;
+    p {
+      display: flex;
+      line-height: 25px;
+      margin-right: 18px;
+      img {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+      }
+      span {
+        display: inline-block;
+      }
+    }
   }
   .mr-18 {
     display: inline-block;
