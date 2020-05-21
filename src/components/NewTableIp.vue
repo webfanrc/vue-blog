@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios';
+  import service from '../utils/http'
   import Chart from 'chart.js'
   export default {
     name: 'NewTableIp',
@@ -22,7 +22,7 @@
     methods: {
       getData() {
         let that = this
-        axios.get('/statistic/ip').then(function(response) {
+        service.get('/statistic/ip').then(function(response) {
           that.lineTableData = response.data.ipListFormat;
           that.setData();
           that.init();

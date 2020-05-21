@@ -6,7 +6,7 @@
 </template>
 <script>
   import Chart from 'chart.js'
-  import axios from 'axios'
+  import service from '../utils/http';
   export default {
     name: 'NewTableArticle',
     data() {
@@ -22,7 +22,7 @@
     methods: {
       getData() {
         let that = this
-        axios.get('/statistic/article').then(function(response) {
+        service.get('/statistic/article').then(function(response) {
           that.barTableData = response.data.articleListFormat;
           that.setData();
           that.init();

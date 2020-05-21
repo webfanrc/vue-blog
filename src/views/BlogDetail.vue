@@ -5,15 +5,15 @@
     <div class="i">
       <div class="info">
         <p>
-          <img src="../assets/calendar-day.svg">
+          <img src="./../assets/calendar-day.svg">
           <span>发布日期：{{blogData.create_date}}</span>
         </p>
         <p v-if="blogData.edit_date && blogData.edit_date != blogData.create_date">
-          <img src="../assets/calendar-plus.svg">
+          <img src="./../assets/calendar-plus.svg">
           <span>编辑日期：{{blogData.edit_date}}</span>
         </p>
         <p>
-          <img src="../assets/view.svg">
+          <img src="./../assets/view.svg">
           <span>阅读次数：{{statistic.count}}</span>
         </p>
       </div>

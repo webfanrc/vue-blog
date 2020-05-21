@@ -16,13 +16,13 @@
 
         <div class="control">
           <p>
-            <a @click="routerToNewPage()">New</a>
+            <a @click="routerToNewPage()">NEW</a>
           </p>
           <p>
-            <a @click="all()">All</a>
+            <a @click="all()">order by date</a>
           </p>
           <p>
-            <a @click="orderByReading()">Order By Reading</a>
+            <a @click="orderByReading()">order by reading</a>
           </p>
         </div>
 
