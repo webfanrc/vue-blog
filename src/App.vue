@@ -381,3 +381,39 @@ img {
   opacity: 0;
 }
 </style>
+
+<style lang="less">
+  @black: #1c1c1f;
+  @label: #ffffff;
+  @secondaryLabel: #989899;
+  @tertiaryLabel: #59595e;
+  @media (prefers-color-scheme: dark) {
+    div#app {
+      background-color: @black;
+      color: @label;
+      div#header_nav {
+        background-color: @black;
+        border-bottom: 1px solid @secondaryLabel;
+        #nav {
+          a {
+            color: @label;
+          }
+        }
+      }
+      div.i {
+        border-bottom: 1px solid @secondaryLabel;
+        div.info {
+          color: @secondaryLabel;
+        }
+      }
+      div.blogTag {
+        border-bottom: 1px solid @secondaryLabel;
+      }
+    }
+
+    div#footer_nav {
+      background-color: @black;
+      border-top: 1px solid @secondaryLabel;
+    }
+  }
+</style>

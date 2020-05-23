@@ -3,14 +3,20 @@
     <h1>About</h1>
     <div>
       <p>
-        这个网站是自己搭建的一个博客，代码详见Demo，主要记录中级算法以及网页应用编程的一些内容，包括工作中的一些问题，尽量一周1-2篇。网页的统计数据可以在<a href="/Statistic">Statistic</a>中看到。文章的分类以及更新情况可以在<a href="/Archives">Archives</a>中看到。博客的样式，功能，安全，部署上的一些问题会在之后进行迭代。
+        这个网站是自己搭建的一个博客，代码详见Demo，主要记录最近看的书、中级算法以及网页应用编程的一些内容，也会包括工作中的一些问题，尽量一周1-2篇。网页的统计数据可以在<a href="/Statistic">Statistic</a>中看到。文章的分类以及更新情况可以在<a href="/Archives">Archives</a>中看到。博客的样式，功能，安全，部署上的一些问题会在之后进行迭代。
       </p>
 
       <p class="design">
-        博客在设计之初参照了jekelly模版文件，后来迭代过程中参考了WorldPress的Colorlib样式以及功能（比较通用）。具体技术上怎么搭建的参见我最近的博客。
+        博客在设计之初参照了jekelly模版文件，后来迭代过程中参考了WorldPress的Colorlib样式以及功能。具体技术上怎么搭建的以及迭代流程参见:
       </p>
+      <ul>
+        <li>http://xieruochen.me/blogDetail?id=9</li>
+        <li>http://xieruochen.me/blogDetail?id=13</li>
+        <li>http://xieruochen.me/blogDetail?id=26</li>
+        <li>http://xieruochen.me/blogDetail?id=40</li>
+      </ul>
       <p class="contact">
-        想要联系我也可以给我发邮件：xrc_1995@163.com
+        想要联系我也可以给我发邮件：ruochenxie@163.com
       </p>
     </div>
     <div class="main_about">
@@ -69,7 +75,7 @@
         demo_list_en: [
           {
             name: "Personal Blog",
-            description: "using Vue.js and Node.js, build on Amazon Lightsail, main functions are leaving message and IP statics, have mobile page.",
+            description: "using Vue.js and Node.js, build on Amazon Lightsail, main functions are leaving message and IP/PV statics, have mobile page.",
             source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
             online_link: "http://xieruochen.info"
           },
@@ -98,7 +104,7 @@
         demo_list_cn: [
           {
             name: "个人博客",
-            description: "前端用了Vue，后端用了Node.js，数据库为mysql，server为Nginx，云服务器为Amazon Lightsail，主要功能有留言、IP统计，适配手机端。",
+            description: "前端用了Vue，后端用了Node.js，数据库为mysql，server为Nginx，云服务器为Amazon Lightsail，主要功能有留言、IP/PV统计，适配手机端。",
             source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
             online_link: "http://xieruochen.info"
           },

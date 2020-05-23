@@ -6,6 +6,21 @@
         <p class="h1" @click="routerToBlogPage(blog.id)">{{ blog.title }}</p>
         <p class="date">{{blog.date}}</p>
       </div>
+
+
+
+      <?xml version="1.0" ?>
+      <rss version="2.0">
+        <channel>
+          <title>Ruochen's Space</title>
+          <link>http://xieruochen.me/</link>
+
+          <item v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
+            <title>{{ blog.title }}</title>
+            <link class="date">{{'http://xieruochen.me/blogDetail?id=' + blog.id}}</link>
+          </item>
+        </channel>
+      </rss>
     </template>
 
   </div>

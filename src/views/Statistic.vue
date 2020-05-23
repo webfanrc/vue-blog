@@ -4,8 +4,9 @@
       <h1>Statistic</h1>
     </div>
 
-    <new-table-article></new-table-article>
-    <new-table-ip></new-table-ip>
+    <table-article></table-article>
+    <table-ip></table-ip>
+    <table-pv></table-pv>
 
   </div>
 </template>
@@ -15,15 +16,22 @@
   import ErrorComponent from '../components/ErrorComponent'
   export default {
     components: {
-      'NewTableArticle': ()=> ({
-        component: import('../components/NewTableArticle'),
+      'TableArticle': ()=> ({
+        component: import('../components/TableArticle'),
         loading: LoadingComponent,
         error: ErrorComponent,
         delay: 0,
         timeout: 30000,
       }),
-      'NewTableIp': ()=> ({
-        component: import('../components/NewTableIp'),
+      'TableIp': ()=> ({
+        component: import('../components/TableIp'),
+        loading: LoadingComponent,
+        error: ErrorComponent,
+        delay: 0,
+        timeout: 30000,
+      }),
+      'TablePv': ()=> ({
+        component: import('../components/TablePv'),
         loading: LoadingComponent,
         error: ErrorComponent,
         delay: 0,

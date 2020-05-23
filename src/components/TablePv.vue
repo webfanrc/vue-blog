@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3>Daily visitor</h3>
-    <canvas id="myChartLine" width="400" height="250"></canvas>
+    <h3>Page views</h3>
+    <canvas id="myChartLinePv" width="400" height="250"></canvas>
   </div>
 </template>
 <script>
@@ -13,7 +13,7 @@
       return {
         time: [],
         number: [],
-        lineTableData: {}
+        lineTableData: {},
       }
     },
     mounted() {
@@ -22,8 +22,8 @@
     methods: {
       getData() {
         let that = this
-        service.get('/statistic/ip').then(function(response) {
-          that.lineTableData = response.data.ipListFormat;
+        service.get('/statistic/pv').then(function(response) {
+          that.lineTableData = response.data.pvListFormat;
           that.setData();
           that.init();
         });
@@ -37,7 +37,7 @@
         })
       },
       init() {
-        let ctx = document.getElementById('myChartLine').getContext('2d');
+        let ctx = document.getElementById('myChartLinePv').getContext('2d');
 
         let myChart = new Chart(ctx, {
           type: 'line',
