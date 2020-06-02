@@ -9,7 +9,7 @@ if ( process.env.NODE_ENV === 'development' ) {
   axios.defaults.baseURL="http://localhost:3000";
 } else {
   // 线上环境
-  axios.defaults.baseURL="http://localhost:3000";
+  axios.defaults.baseURL="";
 }
 Vue.config.productionTip = false;
 
