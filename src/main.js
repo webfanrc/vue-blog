@@ -5,10 +5,11 @@ import store from "./store";
 import axios from 'axios';
 
 if ( process.env.NODE_ENV === 'development' ) {
-  // axios.defaults.baseURL="http://localhost:8888";
+  // 本地环境
   axios.defaults.baseURL="http://localhost:3000";
 } else {
-  axios.defaults.baseURL="";
+  // 线上环境
+  axios.defaults.baseURL="http://localhost:3000";
 }
 Vue.config.productionTip = false;
 

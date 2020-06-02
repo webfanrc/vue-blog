@@ -1,6 +1,8 @@
 <template>
   <div class="blog">
-
+    <h1>
+      Blog
+    </h1>
     <template v-if="fin">
       <div v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
         <p class="h1" @click="routerToBlogPage(blog.id)">{{ blog.title }}</p>

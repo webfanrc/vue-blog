@@ -7,13 +7,13 @@
       </p>
 
       <p class="design">
-        博客在设计之初参照了jekelly模版文件，后来迭代过程中参考了WorldPress的Colorlib样式以及功能。具体技术上怎么搭建的以及迭代流程参见:
+        博客在设计之初参照了jekelly模版文件，后来迭代过程中参考了WorldPress的Colorlib样式以及功能。具体技术上怎么搭建的以及迭代流程可见Github repository，回顾可见:
       </p>
       <ul>
-        <li>http://xieruochen.me/blogDetail?id=9</li>
-        <li>http://xieruochen.me/blogDetail?id=13</li>
-        <li>http://xieruochen.me/blogDetail?id=26</li>
-        <li>http://xieruochen.me/blogDetail?id=40</li>
+        <li><a href="/blogDetail?id=9">最初的jekyll静态版本</a></li>
+        <li><a href="/blogDetail?id=13">博客改版计划</a></li>
+        <li><a href="/blogDetail?id=26">最初版博客搭建回顾</a></li>
+        <li><a href="/blogDetail?id=40">PM2自动化部署实践</a></li>
       </ul>
       <p class="contact">
         想要联系我也可以给我发邮件：ruochenxie@163.com
@@ -77,7 +77,7 @@
             name: "Personal Blog",
             description: "using Vue.js and Node.js, build on Amazon Lightsail, main functions are leaving message and IP/PV statics, have mobile page.",
             source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
-            online_link: "http://xieruochen.info"
+            online_link: "http://xieruochen.me"
           },
           {
             name: "Restaurant List",
@@ -106,7 +106,7 @@
             name: "个人博客",
             description: "前端用了Vue，后端用了Node.js，数据库为mysql，server为Nginx，云服务器为Amazon Lightsail，主要功能有留言、IP/PV统计，适配手机端。",
             source_code: ["https://github.com/RuoChen95/vue-blog", "https://github.com/RuoChen95/express-blog"],
-            online_link: "http://xieruochen.info"
+            online_link: "http://xieruochen.me"
           },
           {
             name: "Restaurant List",
