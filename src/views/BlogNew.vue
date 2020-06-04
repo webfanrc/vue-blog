@@ -40,12 +40,12 @@
         let that = this;
         service.post('/blog/new', {
           passport: passport,
-          blog_content: that.blogData.content,
+          blog_content: that.blogData.content.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"),
           blog_title: that.blogData.title,
           blog_tag: that.blogData.tag,
         })
           .then(function(response) {
-            console.log(response);
+            console.log(response.data);
             if (response.data.code == 0) {
               that.$router.push({ path: "blogDetail", query: { id: response.data.id } });
             } else {
