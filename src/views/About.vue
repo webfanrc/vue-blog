@@ -3,11 +3,11 @@
     <h1>About</h1>
     <div>
       <p>
-        这个网站是自己搭建的一个博客，代码详见Demo，主要记录最近看的书、中级算法以及网页应用编程的一些内容，也会包括工作中的一些问题，尽量一周1-2篇。网页的统计数据可以在<a href="/Statistic">Statistic</a>中看到。文章的分类以及更新情况可以在<a href="/Archives">Archives</a>中看到。博客的样式，功能，安全，部署上的一些问题会在之后进行迭代。
+        这个网站是<a :href="axios.defaults.baseURL + '/blog/PS'">自己</a>搭建的一个博客。
       </p>
 
       <p class="design">
-        博客在设计之初参照了jekelly模版文件，后来迭代过程中参考了WorldPress的Colorlib样式以及功能。具体技术上怎么搭建的以及迭代流程可见Github repository，回顾可见:
+        具体搭建流程:
       </p>
       <ul>
         <li><a href="/blogDetail?id=9">最初的jekyll静态版本</a></li>
@@ -55,10 +55,6 @@
         </li>
       </ul>
 
-      <h2>Attachments</h2>
-      <ul>
-        <li><a :href="axios.defaults.baseURL + '/blog/PS'">Personnal Statement</a></li>
-      </ul>
     </div>
 
     <!--<comment-and-thoughts :groupArea="'About'"></comment-and-thoughts>-->

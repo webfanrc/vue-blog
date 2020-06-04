@@ -1,8 +1,8 @@
 <template>
   <div class="blog">
-    <h1>
-      Blog
-    </h1>
+    <!--<h1>-->
+      <!--Blog-->
+    <!--</h1>-->
     <template v-if="fin">
       <div v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
         <p class="h1" @click="routerToBlogPage(blog.id)">{{ blog.title }}</p>
@@ -11,18 +11,18 @@
 
 
 
-      <?xml version="1.0" ?>
-      <rss version="2.0">
-        <channel>
-          <title>Ruochen's Space</title>
-          <link>http://xieruochen.me/</link>
+      <!--<?xml version="1.0" ?>-->
+      <!--<rss version="2.0">-->
+        <!--<channel>-->
+          <!--<title>Ruochen's Space</title>-->
+          <!--<link>http://xieruochen.me/</link>-->
 
-          <item v-for="(blog, index) in blogInfo" class="blogTag" :key="index">
-            <title>{{ blog.title }}</title>
-            <link class="date">{{'http://xieruochen.me/blogDetail?id=' + blog.id}}</link>
-          </item>
-        </channel>
-      </rss>
+          <!--<item v-for="(blog, index) in blogInfo" class="blogTag" :key="index">-->
+            <!--<title>{{ blog.title }}</title>-->
+            <!--<link class="date">{{'http://xieruochen.me/blogDetail?id=' + blog.id}}</link>-->
+          <!--</item>-->
+        <!--</channel>-->
+      <!--</rss>-->
     </template>
 
   </div>
