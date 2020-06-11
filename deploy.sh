@@ -1,2 +1,7 @@
-sudo npm run build
-sudo nginx -s reload
+#!/bin/bash
+
+sudo -s
+
+git pull
+
+npm run build
