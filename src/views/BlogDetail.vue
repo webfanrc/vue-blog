@@ -86,6 +86,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+  p {
+    white-space: pre-line;
+  }
   h1.title,
   div.info {
     max-width: 720px;
