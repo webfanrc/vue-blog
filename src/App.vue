@@ -152,6 +152,9 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+p {
+  white-space: pre-line;
+}
 #app {
   font-family: Montserrat, "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
