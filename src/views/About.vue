@@ -2,18 +2,23 @@
   <div class="about">
     <h1>About</h1>
     <div>
-      <p>
-        这个网站是搭建的一个博客，目的是记录技术、阅读、娱乐方面的思考。
+      <p class="aim">
+
+        这个网站是搭建的一个博客，目的是：
+
+        1. 记录技术、阅读、娱乐方面的思考，方便自己回顾；
+        2. 学习以及回顾web dev中的知识以及技术，侧重后端；
+        3. 现有市面上的博客无法完美满足我的需求，也为了能够完全控制自己的博客，主要为了记录读者的IP以及具体行为；
       </p>
-      <p class="design">
-        具体搭建流程:
-      </p>
-      <ul>
-        <li><a href="/blogDetail?id=9">最初的jekyll静态版本</a></li>
-        <li><a href="/blogDetail?id=13">博客改版计划</a></li>
-        <li><a href="/blogDetail?id=26">最初版博客搭建回顾</a></li>
-        <li><a href="/blogDetail?id=40">PM2自动化部署实践</a></li>
-      </ul>
+      <div class="design">
+        <p>具体搭建流程:</p>
+        <ul>
+          <li><a href="/blogDetail?id=9">最初的jekyll静态版本</a></li>
+          <li><a href="/blogDetail?id=13">博客改版计划</a></li>
+          <li><a href="/blogDetail?id=26">最初版博客搭建回顾</a></li>
+          <li><a href="/blogDetail?id=40">PM2自动化部署实践</a></li>
+        </ul>
+      </div>
       <p class="contact">
         想要联系我可以加我微信：xruochenn，或者<a href="mailto:xr020@ie.cuhk.edu.hk">邮件</a>。
       </p>
@@ -23,7 +28,7 @@
       -->
       <h2>Attachments</h2>
       <ul>
-        <li><a :href="axios.defaults.baseURL + '/pdf/PS-Xie+Ruochen.pdf'" download="123.pdf">Personal Statement</a></li>
+        <li><a :href="axios.defaults.baseURL + '/pdf/PS-Xie+Ruochen.pdf'" download>Personal Statement</a></li>
       </ul>
     </div>
     <div class="main_about">
@@ -57,6 +62,9 @@
       </ul>
       <h2>Experience</h2>
       <ul>
+        <li>
+          MSc of Information Engineering (In CUHK, now)
+        </li>
         <li>
           Front-end web Development (In Bitmain.com, 4/2017 - 1/2019)
         </li>
