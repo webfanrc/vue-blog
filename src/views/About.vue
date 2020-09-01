@@ -3,9 +3,8 @@
     <h1>About</h1>
     <div>
       <p>
-        这个网站是<a :href="axios.defaults.baseURL + '/blog/PS'">自己</a>搭建的一个博客。
+        这个网站是搭建的一个博客，目的是记录技术、阅读、娱乐方面的思考。
       </p>
-
       <p class="design">
         具体搭建流程:
       </p>
@@ -16,8 +15,16 @@
         <li><a href="/blogDetail?id=40">PM2自动化部署实践</a></li>
       </ul>
       <p class="contact">
-        想要联系我也可以给我发邮件：ruochenxie@163.com
+        想要联系我可以加我微信：xruochenn，或者<a href="mailto:xr020@ie.cuhk.edu.hk">邮件</a>。
       </p>
+      <!--
+      待定需求：增加微信图片在右下角
+      <img>
+      -->
+      <h2>Attachments</h2>
+      <ul>
+        <li><a :href="axios.defaults.baseURL + '/pdf/PS-Xie+Ruochen.pdf'" download="123.pdf">Personal Statement</a></li>
+      </ul>
     </div>
     <div class="main_about">
       <div style="display: flex; justify-content: space-between; align-items: center">
