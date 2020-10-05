@@ -28,7 +28,7 @@
       -->
       <h2>Attachments</h2>
       <ul>
-        <li><a :href="axios.defaults.baseURL + '/pdf/PS-Xie+Ruochen.pdf'" download>Personal Statement</a></li>
+        <li><a :href="axios.defaults.baseURL + '/file/ps'">Personal Statement</a></li>
       </ul>
     </div>
     <div class="main_about">
