@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>About</h1>
+
     <div>
       <p class="aim">
 
@@ -30,6 +31,8 @@
       <ul>
         <li><a :href="axios.defaults.baseURL + '/file/ps'">Personal Statement</a></li>
       </ul>
+
+      <file-uploader></file-uploader>
     </div>
     <div class="main_about">
       <div style="display: flex; justify-content: space-between; align-items: center">
@@ -77,9 +80,11 @@
 </template>
 <script>
   import axios from 'axios';
+  import FileUploader from '../components/FileUploader';
   export default {
     name: 'About',
     components: {
+      FileUploader
     },
     data: function() {
       return {
